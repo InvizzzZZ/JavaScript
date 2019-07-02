@@ -27,10 +27,10 @@ function checkStr(question, wrong) {
 }
 
 function checkAge(question) {
-    let age = prompt("Ваш возраст?");
+    let age = Number(prompt("Ваш возраст?"));
     while (isNaN(age) || Number(age) > 150 || Number(age) <= 0) {
         alert("Вы не ввели или ввели некорректый возраст");
-        age = prompt(question);
+        age = Number(prompt(question));
     }
     return age;
 }
