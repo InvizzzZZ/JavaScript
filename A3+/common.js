@@ -13,7 +13,12 @@ function checkPalindrom(str) {
     newStr = newStr.replace(/ё/g, 'е');
     newStr = newStr.replace(/ъ/g, 'ь');
 
-    return newStr === newStr.split('').reverse().join('');
+    let newStrReverse = '';
+
+    for(let i = newStr.length -1; i>=0; i--){
+        newStrReverse += newStr.charAt(i);
+    }
+    return newStr === newStrReverse;
 }
 
 

@@ -4,15 +4,17 @@ alert(deleteSpaces(str));
 
 function deleteSpaces(str) {
     let newStr = str;
+    let beginSlice = 0;
+    let endSlice = newStr.length - 1;
 
-    while (newStr.charCodeAt(0) === 32) {
-        newStr = newStr.slice(1);
+    while (newStr.charAt(beginSlice) === ' ') {
+        beginSlice++;
     }
 
-    while (newStr.charCodeAt(newStr.length - 1) === 32) {
-        newStr = newStr.slice(0, -1);
+    while (newStr.charAt(endSlice) === ' ') {
+        endSlice--;
     }
 
-    return newStr;
+    return newStr.slice(beginSlice, endSlice + 1);
 }
 
