@@ -11,10 +11,16 @@ function deleteSpaces(str) {
         beginSlice++;
     }
 
-    while (newStr.charAt(endSlice) === ' ') {
-        endSlice--;
+    if (beginSlice - 1 !== endSlice) {
+        while (newStr.charAt(endSlice) === ' ') {
+            endSlice--;
+        }
     }
 
-    return newStr.slice(beginSlice, endSlice + 1);
+    if (beginSlice !== 0 || endSlice !== newStr.length - 1) {
+        newStr = newStr.slice(beginSlice, endSlice + 1);
+    }
+
+    return newStr;
 }
 
