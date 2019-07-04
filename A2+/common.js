@@ -1,4 +1,3 @@
-function start() {
     let str = prompt("Введите строку");
 
     alert(deleteSpaces(str));
@@ -24,5 +23,4 @@ function start() {
 
         return newStr;
     }
-}
 
