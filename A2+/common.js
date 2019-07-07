@@ -1,26 +1,26 @@
-let str = prompt("Введите строку");
+    let str = prompt("Введите строку");
 
-alert(deleteSpaces(str));
+    alert(deleteSpaces(str));
 
-function deleteSpaces(str) {
-    let newStr = str;
-    let beginSlice = 0;
-    let endSlice = newStr.length - 1;
+    function deleteSpaces(str) {
+        let newStr = str;
+        let beginSlice = 0;
+        let endSlice = newStr.length - 1;
 
-    while (newStr.charAt(beginSlice) === ' ') {
-        beginSlice++;
-    }
-
-    if (beginSlice - 1 !== endSlice) {
-        while (newStr.charAt(endSlice) === ' ') {
-            endSlice--;
+        while (newStr.charAt(beginSlice) === ' ') {
+            beginSlice++;
         }
-    }
 
-    if (beginSlice !== 0 || endSlice !== newStr.length - 1) {
-        newStr = newStr.slice(beginSlice, endSlice + 1);
-    }
+        if (beginSlice - 1 !== endSlice) {
+            while (newStr.charAt(endSlice) === ' ') {
+                endSlice--;
+            }
+        }
 
-    return newStr;
-}
+        if (beginSlice !== 0 || endSlice !== newStr.length - 1) {
+            newStr = newStr.slice(beginSlice, endSlice + 1);
+        }
+
+        return newStr;
+    }
 
