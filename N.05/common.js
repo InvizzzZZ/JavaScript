@@ -1,20 +1,19 @@
 let arr = [5, 7,
-    [4, [2], 8, [1, 3], 2],
-    [9, []],
-    1, 8
-];
-
-let sum = 0;
+          [4, [2], 8, [1, 3], 2],
+          [9, []],
+          1, 8
+          ];
 
 alert(treeSum(arr));
 
-function treeSum(arrParam) {
+function treeSum(arrParam, sumParam) {
+    let sum = sumParam || 0;
 
     arrParam.forEach(function (item, i, arr) {
         if (typeof item !== 'object') {
             sum += item;
         } else {
-            return treeSum(arr[i]);
+            sum = treeSum(arr[i], sum);
         }
     });
 
