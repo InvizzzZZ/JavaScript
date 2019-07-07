@@ -10,9 +10,9 @@ function countLetters(str) {
     };
 
     let count = 0;
-
+    str = str.toLowerCase();
     for (let i = 0; i < str.length; i++) {
-        if (str.toLowerCase().charAt(i) in letters) {
+        if (str.charAt(i) in letters) {
             count++;
         }
     }
