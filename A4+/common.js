@@ -2,25 +2,16 @@
 
 let userStr = prompt("Введите фразу на проверку на палиндром");
 
-alert(userStr + checkPalindrom(userStr));
+alert(userStr + checkPalindrom(userStr)? ' - является палиндромом' : ' - не является палиндромом');
 
-function checkPalindrom(str, beginStr, endStr) {
+function checkPalindrom(str) {
+    
     str = str.toLowerCase().replace(/[^а-яё]/g, '');
 
-    beginStr = beginStr || 0;
-    endStr = endStr || str.length - 1;
+    if (str.charAt(0) !== str.charAt(str.length - 1)) {
+        return false;
 
-    let result = true;
-
-    if (beginStr < endStr) {
-        if (str.charAt(beginStr) === str.charAt(endStr)) {
-            checkPalindrom(str, beginStr + 1, endStr - 1);
-        } else {
-            result = false;
-        }
     } else {
-        result = false;
+        return checkPalindrom(str.slice(1, str.length - 1));
     }
-
-    return result ? ' - является палиндромом' : ' - не является палиндромом';
 }
