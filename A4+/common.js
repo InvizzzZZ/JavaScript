@@ -2,9 +2,7 @@
 
 let userStr = prompt("Введите фразу на проверку на палиндром");
 
-let str = userStr.toLowerCase().replace(/[^а-яё]/g, '');
-
-alert(`${userStr} ${checkPalindrom(str) ? ' - является палиндромом' : ' - не является палиндромом'}`);
+alert(`${userStr} ${checkPalindrom(userStr.toLowerCase().replace(/[^а-яё]/g, '')) ? ' - является палиндромом' : ' - не является палиндромом'}`);
 
 function checkPalindrom(str) {
     if (str.charAt(0) !== str.charAt(str.length - 1)) {
