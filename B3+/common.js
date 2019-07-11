@@ -31,7 +31,7 @@ function find(str) {
     }
 
     if(Number(str)){
-        return Number(str);
+        return Number(str).toFixed(4);
     }
 
     while (true) {
@@ -44,7 +44,7 @@ function find(str) {
             result = createArray(result);
 
             result = calculateArray(result);
-            return result;
+            return result.toFixed(4);
         }
 
         result = str.substring(begin + 1, end);
