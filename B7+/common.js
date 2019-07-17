@@ -20,7 +20,7 @@ function formatNumber(number, pattern) {
 
     let arrayPattern = pattern.split('.');
 
-    let decimals = arrayPattern[1].length; //кол-во знаков после запятой   .match(/.{1,3}/g).join(" ")
+    let decimals = arrayPattern[1].length; //кол-во знаков после запятой 
 
     //округленная десятичная часть с точкой в виде строки
     let strFraction = Number(number).toFixed(decimals);
