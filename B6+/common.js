@@ -30,6 +30,8 @@ function buildWrapper(tag) {
 
     return (function (str, options) {
 
+        let strStyles = '';
+
         // замена & на мнемонику
         str = str.split('&').join('&amp;');
 
@@ -47,7 +49,7 @@ function buildWrapper(tag) {
         }
 
         if (options) {
-            var strStyles =' ' + createStyles(options);
+            strStyles =' ' + createStyles(options);
         }
 
         return '<' + tag + strStyles + '>' + str + '</' + tag + '>';
