@@ -56,7 +56,7 @@ function transform(wordBegin, wordEnd) {
 
         let count = 0;
 
-        for (let i = 0; i < 4; i++) {
+        for (let i = 0; i < wordFirstArr.length; i++) {
             if (wordFirstArr[i] !== wordSecondArr[i]) {
                 count++;
             }
