@@ -15,71 +15,53 @@ B4+
 
 'use strict';
 
-// debugger;
+alert(transform("ЛИСА", "ЛОСЬ"));
+alert(transform("МУХА", "СЛОН"));
 
-// alert(f("ЛИСА", "ЛОСЬ"));
-alert(f("МУХА", "СЛОН"));
+function transform(wordBegin, wordEnd) {
 
-function f(wordBegin, wordEnd) {
     let dictionary = [
         "ТАРА", "ЛИПА", "ТУРА", "ЛУЖА", "ПАРК", "ЛОЖЬ", "ЛУПА", "ПЛОТ",
         "МУРА", "ПАУК", "ПАУТ", "ПЛУТ", "ЛОЖА", "СЛОТ", "ПАРА"
     ];
 
-    let str = wordBegin;
+    let str = wordBegin; //цепочка от начального слова до конечного
 
-    for(var i = 0; i < dictionary.length; ){
+    for (var i = 0; i < dictionary.length; i++) {
 
-        if(checkWord(wordBegin, wordEnd) === 3){
-            str += ' ' + wordEnd;
+        //если текущее слово и слово, которое надо получить отличаются на 1 букву, то функция завершает работу
+        if (checkWord(wordBegin, wordEnd) === 1) {
+            str += '-' + wordEnd;
             break;
         }
 
-        if(checkWord(wordBegin, dictionary[i]) === 3){
+        //если текущее слово и проверяемое слово из словаря отличаются на 1 букву
+        if (checkWord(wordBegin, dictionary[i]) === 1) {
 
-            wordBegin = dictionary[i];
-            str += ' ' + dictionary[i];
-            alert(dictionary.splice(i, 1));
-            i = 0;
+            wordBegin = dictionary[i];  //меняем теущее слово на проверяемое из словаря для дальнейшей проверки
+            str += '-' + dictionary[i]; //добавляем подходящее слово в цепочку
+            dictionary.splice(i, 1);    //удаляем проверяемое слово из словаря
+            i = -1;                     //изменяем индекс, чтоб проверка началась с 0-ого элемента
         }
-
-        i++;
     }
 
     return str;
 
-    //функция подсчитывает кол-во одинаковых букв в двух словах
+    //функция подсчитывает кол-во несовпадений букв в двух словах
     function checkWord(wordFirst, wordSecond) {
 
         let wordFirstArr = wordFirst.split('');
 
         let wordSecondArr = wordSecond.split('');
 
-        var countRepeats = {};
-
-        wordFirstArr.forEach(hashLetters);
-        wordSecondArr.forEach(hashLetters);
-
-        //функция наполняющая хэш, где ключи это буквы из которых состоят проверяемые слова,
-        // а значения кол-во повторений букв в 2-х словах
-        function hashLetters(v) {
-            if (v in countRepeats) {
-                countRepeats[v.toString()]++;
-            } else {
-                countRepeats[v.toString()] = 1;
-            }
-        }
-
-        //-------------------------------------------------------------------------------------
-
         let count = 0;
 
-        for (let elem in countRepeats) {
-            if (countRepeats[elem] >= 2) {
+        for (let i = 0; i < 4; i++) {
+            if (wordFirstArr[i] !== wordSecondArr[i]) {
                 count++;
             }
         }
 
-        return count;
+        return count; // кол-во несовпадений
     }
 }
