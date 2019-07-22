@@ -33,7 +33,7 @@ function deleteDrink() {
 
 function addDrink() {
     let name = prompt('Введите название напитка');
-    if(name === null){
+    if (name === null) {
         return alert('Ввод прерван');
     }
     let alcoholic = confirm('Напиток алкогольный?');
@@ -47,7 +47,9 @@ function getInfo() {
 
     let info = drinkStorage.getValue(drink);
 
-    if(info === undefined){return alert('Такого напитка нет в базе')}
+    if (info === undefined) {
+        return alert('Такого напитка нет в базе')
+    }
 
     let str = `напиток ${drink}\nалкогольный: ${info.alcoholic ? 'да' : 'нет'}\nрецепт приготовления:\n${info.recipe}`;
 
@@ -57,17 +59,19 @@ function getInfo() {
 function HashStorage() {
     var self = this;
 
+    var storage = {};
+
     self.addValue = function (key, value) {
-        self[key] = value;
+        storage[key] = value;
     };
 
     self.getValue = function (key) {
-        return self[key];
+        return storage[key];
     };
 
     self.deleteValue = function (key) {
-        if (key in self) {
-            delete self[key];
+        if (key in storage) {
+            delete storage[key];
             return true;
         }
 
@@ -75,11 +79,6 @@ function HashStorage() {
     };
 
     self.getKeys = function () {
-        let keysArr = [];
-        for (let el in self) {
-            if (el === 'addValue' || el === 'getValue' || el === 'deleteValue' || el === 'getKeys') continue;
-            keysArr.push(el);
-        }
-        return keysArr;
+        return Object.keys(storage);
     }
 }
