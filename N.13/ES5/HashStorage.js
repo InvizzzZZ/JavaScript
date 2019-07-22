@@ -33,6 +33,9 @@ function deleteDrink() {
 
 function addDrink() {
     let name = prompt('Введите название напитка');
+    if(name === null){
+        return alert('Ввод прерван');
+    }
     let alcoholic = confirm('Напиток алкогольный?');
     let recipe = prompt('Введите рецепт приготовления напитка');
 
