@@ -13,37 +13,21 @@ function mood(colorsCount) {
 
     console.log('цветов: ' + colorsCount);
 
-    for (var i = 1; i <= 7; i++) {
+    for (var i = 1; i <= colorsCount; i++) {
 
         var n = randomDiap(1, 7);
         var colorName = colors[n];
 
         if (!(colorName in colorsHash)) {
             colorsHash[colorName] = true;
+            console.log(colorName);
         } else {
-            i--; //чтобы избежать ситуации, когда цикл for закончится из-за i >= 8,
-        }        // а в хэше еще нет 3-х эелемнтов
+            i--; //чтобы избежать ситуации, когда цикл for закончится из-за i > colorsCount ,
+        }        // а в хэше еще нет colorsCount эелемнтов
 
-        if (countElements(colorsHash) >= colorsCount) {
-
-            for (let color in colorsHash) {
-                console.log(color);
-            }
-
-            break;
-        }
     }
 }
 
 function randomDiap(n, m) {
     return Math.floor(Math.random() * (m - n + 1)) + n;
-}
-
-function countElements(hash) { //подсчет эелементов в хэше
-    let count = 0;
-
-    for (let el in hash) {
-        count++;
-    }
-    return count;
 }
