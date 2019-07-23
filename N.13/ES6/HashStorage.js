@@ -5,17 +5,19 @@ class HashStorage {
 
     }
 
+    #storage = {};
+
     addValue(key, value) {
-        this[key] = value;
+        this.#storage[key] = value;
     }
 
     getValue(key) {
-        return this[key];
+        return this.#storage[key];
     }
 
     deleteValue(key) {
-        if (key in this) {
-            delete this[key];
+        if (key in this.#storage) {
+            delete this.#storage[key];
             return true;
         }
 
@@ -23,22 +25,16 @@ class HashStorage {
     }
 
     getKeys() {
-        let keysArr = [];
-        for(let el in this){
-            if (el === 'addValue' || el === 'getValue' || el === 'deleteValue' || el === 'getKeys') continue;
-            keysArr.push(el);
-        }
-        return keysArr;
+       return Object.keys(this.#storage).join(', ');
     }
 }
 
 let drinkStorage = new HashStorage();
-
 drinkStorage.addValue('Северное сияние', {'alcoholic': true, 'recipe': 'смешать водку и шампанское'});
 drinkStorage.addValue('Кровавая мэри', {'alcoholic': true, 'recipe': 'смешать водку и томатный сок'});
 
 function getAllDrinks() {
-    alert(drinkStorage.getKeys().join(', '));
+    alert(drinkStorage.getKeys());
 }
 
 function deleteDrink() {
@@ -46,7 +42,8 @@ function deleteDrink() {
     if (drink === null) {
         return alert('Операция прервана');
     }
-    alert(drinkStorage.deleteValue(drink) ? 'напиток удален' : 'напитка нет в базе');
+    let result = (drinkStorage.deleteValue(drink) ? 'напиток удален' : 'напитка нет в базе');
+    alert(result);
 }
 
 function addDrink() {

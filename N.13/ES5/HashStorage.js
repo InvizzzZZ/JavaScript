@@ -28,7 +28,8 @@ function deleteDrink() {
     if (drink === null) {
         return alert('Операция прервана');
     }
-    alert(drinkStorage.deleteValue(drink) ? 'напиток удален' : 'напитка нет в базе');
+    let result = (drinkStorage.deleteValue(drink) ? 'напиток удален' : 'напитка нет в базе');
+    alert(result);
 }
 
 function addDrink() {

@@ -13,7 +13,8 @@ function mood(colorsCount) {
 
     console.log('цветов: ' + colorsCount);
 
-    for (var i = 1; i <= colorsCount; i++) {
+    var i = 0;
+    while (i <= colorsCount) {
 
         var n = randomDiap(1, 7);
         var colorName = colors[n];
@@ -21,10 +22,8 @@ function mood(colorsCount) {
         if (!(colorName in colorsHash)) {
             colorsHash[colorName] = true;
             console.log(colorName);
-        } else {
-            i--; //чтобы избежать ситуации, когда цикл for закончится из-за i > colorsCount ,
-        }        // а в хэше еще нет colorsCount эелемнтов
-
+            i++;
+        }
     }
 }
 
