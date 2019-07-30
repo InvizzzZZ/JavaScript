@@ -34,11 +34,15 @@ var formDef1 =
 createForm('main2', formDef1);
 
 function createForm(name, arr) { //название формы и массив содержащий объекты элементов формы
-
+    //form
     let frm = document.createElement('form');
+
     frm.setAttribute('name', name);
     frm.setAttribute('method', 'post');
     frm.setAttribute('action', 'http://fe.it-academy.by/TestForm.php');
+
+    document.body.appendChild(frm);
+    //form end
 
     for (let i = 0; i < arr.length; i++) { //цикл по переданному в параметрах массиву
 
@@ -53,6 +57,7 @@ function createForm(name, arr) { //название формы и массив �
 
             frm.appendChild(tmpLabel);
         }
+        //label end
 
         //input
         if (kind === 'longtext' || kind === 'number' || kind === 'shorttext' || kind === 'submit') {
@@ -69,6 +74,7 @@ function createForm(name, arr) { //название формы и массив �
 
             frm.appendChild(tmpInput);
         }
+        //input end
 
         //select
         if (kind === 'combo') {
@@ -90,6 +96,7 @@ function createForm(name, arr) { //название формы и массив �
                 tmpSelect.add(option);
             }
         }
+        //select end
 
         //radio
         if (kind === 'radio') {
@@ -113,6 +120,7 @@ function createForm(name, arr) { //название формы и массив �
                 frm.appendChild(tmpSpan)
             }
         }
+        //radio end
 
         //checkbox
         if (kind === 'check') {
@@ -126,6 +134,7 @@ function createForm(name, arr) { //название формы и массив �
 
             frm.appendChild(tmpInput);
         }
+        //checkbox end
 
         //textarea
         if (kind === 'memo') {
@@ -140,12 +149,11 @@ function createForm(name, arr) { //название формы и массив �
 
             frm.appendChild(tmpTextArea);
         }
+        //textarea end
 
         //разрывы между элементами формы
         frm.appendChild(document.createElement('br'));
     }
-
-    document.body.appendChild(frm);
 
     //отделить формы друг от друга
     document.body.appendChild(document.createElement('hr'));
