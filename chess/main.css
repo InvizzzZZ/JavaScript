@@ -1,0 +1,26 @@
+div.container {
+    margin: 0 auto;
+    width: 700px;
+    height: 700px;
+
+    background-color: #23314b;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+div.cell {
+    width: 80px;
+    height: 80px;
+}
+
+div.cell.odd{
+    background-color: #b1efe2;
+}
+
+div.cell.even{
+    background-color: #416482;
+}
+

@@ -41,3 +41,64 @@ function sum(a) {
 
     return f;
 }
+
+// Итак, синтаксис ООП в прототипном стиле в общем виде (пока без наследования):
+//
+// function ИмяРодитКласса() {
+//     this.свойство1=значение1;
+// }
+//
+// ИмяРодитКласса.prototype.метод1=function() {
+// ...this.свойство1... // обращаемся к своим свойствам через this
+// ...this.метод1()... // вызываем свои методы через this
+// }
+//
+// Синтаксис ООП-наследования в прототипном стиле:
+//
+//     function ИмяУнаследКласса() {
+//         ИмяРодитКласса.call(this); // явно вызываем конструктор родителя
+//         // чтобы в этом this появились все свойства и методы родителя
+//
+//         this.свойство2=значение2;
+//     }
+// // наследуемся
+// ИмяУнаследКласса.prototype=Object.create(ИмяРодитКласса.prototype);
+// ИмяУнаследКласса.prototype.constructor=ИмяУнаследКласса; // рекомендуется
+//
+// ИмяУнаследКласса.prototype.метод2=function() {
+// ...this.свойство2... // обращаемся к своим свойствам через this
+// ...this.метод2()... // вызываем свои методы через this
+// ...this.свойство1... // обращаемся к свойствам родителя через this
+// ...this.метод1()... // вызываем методы родителя через this
+// }
+
+// получение координат элемента относительно верхнего левого угла страницы
+function getElementPos(elem) {
+    var bbox=elem.getBoundingClientRect();
+    return {
+        left: bbox.left+window.pageXOffset,
+        top: bbox.top+window.pageYOffset
+    };
+}
+
+// то же, кроссбраузерный вариант (в т.ч. для IE8-)
+function getElementPos(elem) {
+    var bbox=elem.getBoundingClientRect();
+
+    var body=document.body;
+    var docEl=document.documentElement;
+
+    var scrollTop=window.pageYOffset||docEl.scrollTop||body.scrollTop;
+    var scrollLeft=window.pageXOffset||docEl.scrollLeft||body.scrollLeft;
+
+    var clientTop=docEl.clientTop||body.clientTop||0;
+    var clientLeft=docEl.clientLeft||body.clientLeft||0;
+
+    var top=bbox.top+scrollTop-clientTop;
+    var left=bbox.left+scrollLeft-clientLeft;
+
+    return {
+        left: left,
+        top: top
+    };
+}
