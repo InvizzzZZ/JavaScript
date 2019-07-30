@@ -1,4 +1,4 @@
-var formDef2 =
+let formDef2 =
     [
         {label: 'Фамилия:', kind: 'longtext', name: 'lastname'},
         {label: 'Имя:', kind: 'longtext', name: 'firstname'},
@@ -9,7 +9,7 @@ var formDef2 =
 
 
 
-var formDef1=
+let formDef1 =
     [
         {label:'Название сайта:',kind:'longtext',name:'sitename'},
         {label:'URL сайта:',kind:'longtext',name:'siteurl'},
@@ -89,7 +89,7 @@ function createForm(name, arr) { //название формы и массив �
 
                 let {text, value} = variants[i];
 
-                var option = document.createElement("option");
+                let option = document.createElement("option");
 
                 option.setAttribute('label', text);
                 option.setAttribute('value', value);
