@@ -7,7 +7,7 @@ var formDef2 =
         {label: 'Зарегистрироваться:', kind: 'submit'},
     ];
 
-createForm('main', formDef2);
+
 
 var formDef1=
     [
@@ -24,7 +24,15 @@ var formDef1=
         {label:'Опубликовать:',kind:'submit'},
     ];
 
-createForm('main2', formDef1);
+
+
+function start() {
+    let buttonStart = document.getElementById('start');
+    buttonStart.style.display = 'none';
+
+    createForm('main2', formDef1);
+    createForm('main', formDef2);
+}
 
 function createForm(name, arr) { //название формы и массив содержащий объекты элементов формы
     //form
