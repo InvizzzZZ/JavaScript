@@ -1,30 +1,67 @@
-var size = 8;                                     // размер доски
-var queens = Array(size);                         // положение ферзей
-for (var c = 0; c < size; c++)                       // бежим по колонкам
-    queens[c] = 0;                                 // всех ставим на первую строку (это не решение)
+'use strict';
 
+var chessboard = [0, 0, 0, 0, 0, 0, 0, 0];
+var solutions = [];
+var index = 0;
 
-var nSolutions = 0;                               // число найденных решений
-
-function Solve(n) {
-    if (n === undefined) n = 0;                       // вначале ферзей нет
-
-    // if (n >= size) {                                 // всех расставили
-    //     if (nSolutions++ < 5)                        // подсчитываем число решений
-    //         Show();                                  // и выводим первые 5
-    //     return;                                     // перебор окончен
-    // }
-
-    for (var r = 0; r < size; r++) {                // бежим по строчкам сверху-вниз
-
-        for (c = 0; c < n; c++)                        // перебираем уже поставленных ферзей
-            if (queens[c] === r || Math.abs(queens[c] - r) === n - c)                    // если они стоят на этой строке
-                break;                                                 // или находятся с новым на одной диагонали
-                                                // вариант не подходит - выходим из цикла
-
-        if (c === n) {                                // ни кто не бьет ферзя на r-той высоте
-            queens[n] = r;                           // ставим его туда
-            Solve(n + 1);                              // и подбираем следующего - рекурсия!
+do {
+    if (checking()) {
+        if (index === 7) {
+            var tmp = [];
+            for (let i = 0; i < 8; i++) {
+                tmp.push(chessboard[i]);
+            }
+            solutions.push(tmp);
+            chessboard[index]++;
+        } else {
+            index++;
         }
+    } else {
+        chessboard[index]++;
+    }
+} while (chessboard[0] < 8);
+
+let p = document.getElementById('sol');
+p.innerText = 'Найдено ' + solutions.length + ' решения';
+
+function f() {
+    var n = +prompt('Введите номер решения');
+    return show(solutions[n]);
+}
+
+function checking() {
+    if (index === 0) {
+        return true;
+    }
+
+    if (chessboard[index] > 7) {
+        chessboard[index] = 0;
+        index--;
+        return false;
+    }
+
+    for (let i = 0; i < index; i++) {
+        if ((chessboard[index] === chessboard[i]) || ((Math.abs(chessboard[index] - chessboard[i])) === (index - i))) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+function show(arr) {
+    let divBoard = document.createElement('div');
+    divBoard.className = 'board';
+    document.body.appendChild(divBoard);
+
+    for (let row = 0; row < arr.length; row++) {
+        for (let column = 0; column < arr.length; column++) {
+            let tmp = document.createElement('div');
+            tmp.className = 'cell ' + ((row + column) % 2 ? 'black' : 'white');
+            tmp.innerHTML = arr[column] === row ? "&#9819;" : " ";
+            divBoard.appendChild(tmp);
+        }
+        let br = document.createElement('br');
+        divBoard.appendChild(br);
     }
 }
