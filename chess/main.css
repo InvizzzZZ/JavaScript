@@ -1,15 +1,18 @@
 .board {
-    border: 2px solid black;
-    margin: 4px;
-    display: inline-block;
+    padding: 0;
+    width: 180px;
+    height: 180px;
+
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .cell {
     border: 1px solid black;
     width: 20px;
     height: 20px;
-    font-size: 20px;
-    display: inline-block;
+    font-size: 16px;
+    text-align: center;
 }
 
 .white {

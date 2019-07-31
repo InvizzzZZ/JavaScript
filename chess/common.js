@@ -25,8 +25,8 @@ let p = document.getElementById('sol');
 p.innerText = 'Найдено ' + solutions.length + ' решения';
 
 function f() {
-    var n = +prompt('Введите номер решения');
-    return show(solutions[n]);
+    var n = +prompt('Введите номер решения от 1 до 92');
+    return show(solutions[n-1], n);
 }
 
 function checking() {
@@ -41,7 +41,8 @@ function checking() {
     }
 
     for (let i = 0; i < index; i++) {
-        if ((chessboard[index] === chessboard[i]) || ((Math.abs(chessboard[index] - chessboard[i])) === (index - i))) {
+        if ((chessboard[index] === chessboard[i]) ||
+            ((Math.abs(chessboard[index] - chessboard[i])) === (index - i))) {
             return false;
         }
     }
@@ -49,7 +50,11 @@ function checking() {
     return true;
 }
 
-function show(arr) {
+function show(arr, n) {
+    let par = document.createElement('p');
+    par.innerHTML = 'Решение номер ' + n;
+    document.body.appendChild(par);
+
     let divBoard = document.createElement('div');
     divBoard.className = 'board';
     document.body.appendChild(divBoard);
@@ -61,7 +66,7 @@ function show(arr) {
             tmp.innerHTML = arr[column] === row ? "&#9819;" : " ";
             divBoard.appendChild(tmp);
         }
-        let br = document.createElement('br');
-        divBoard.appendChild(br);
     }
+    let hr = document.createElement('hr');
+    document.body.appendChild(hr);
 }
