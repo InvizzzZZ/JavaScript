@@ -65,7 +65,7 @@ function createForm(name, arr) { //название формы и массив �
             let tmpInput = document.createElement('input');
 
             if (kind === 'submit') {
-                name = 'button';
+                name = 'buttonTop';
                 tmpInput.setAttribute('value', label); //отображаемое название кнопки
             }
 

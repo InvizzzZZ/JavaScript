@@ -41,8 +41,7 @@ function checking() {
     }
 
     for (let i = 0; i < index; i++) {
-        if ((chessboard[index] === chessboard[i]) ||
-            ((Math.abs(chessboard[index] - chessboard[i])) === (index - i))) {
+        if ((chessboard[index] === chessboard[i]) || ((Math.abs(chessboard[index] - chessboard[i])) === (index - i))) {
             return false;
         }
     }
