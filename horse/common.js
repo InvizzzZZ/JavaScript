@@ -25,7 +25,7 @@ for (let i = 0; i < ceil.length; i++) {
     x++;
 
     if ((i % 2 === 0 && y % 2 === 0) || ((i % 2 !== 0 && y % 2 !== 0))) { // разметка доски
-        ceil[i].style.backgroundColor = '#736767';
+        ceil[i].style.backgroundColor = '#9e9e9e';
     } else {
         ceil[i].style.backgroundColor = '#f0ebeb';
     }
