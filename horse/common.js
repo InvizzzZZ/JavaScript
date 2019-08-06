@@ -11,9 +11,9 @@ for (let i = 0; i < 64; i++) {
 
 let ceil = document.getElementsByClassName('ceil');
 
-let x = 1, y = 8;
+let x = 1, y = 8; // начальные координаты
 
-for (let i = 0; i < ceil.length; i++) {
+for (let i = 0; i < ceil.length; i++) { // координаты для всех ячеек
 
     if (x > 8) { // если х больше 8, то переходим на новы ряд (y--) и начинаем х с 1
         x = 1;
@@ -113,10 +113,10 @@ function nextStep() {
         let index = nextArr.indexOf(min); // индекс минимального элемента в массиве
 
         step++;
-        document.querySelector('.current').classList.remove('current');
+        document.querySelector('.current').classList.remove('current'); // убрать коня с ячейки, где был
 
-        vars[index].classList.add('current');
-        vars[index].classList.add('calculated');
+        vars[index].classList.add('current'); //добавить коня
+        vars[index].classList.add('calculated'); //добавить признак, что конь посещал ячейку
         vars[index].innerHTML = step;
 
         currentX = vars[index].getAttribute('posX');
