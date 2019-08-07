@@ -1,8 +1,17 @@
+'use strict';
+//доска
 let board = document.createElement('div');
 board.className = 'board';
 document.body.appendChild(board);
 
+//кнопка запуска/перезагрузки
+let button = document.createElement('button');
+button.innerHTML = 'GO';
+button.classList.add('button');
+button.setAttribute('onClick', 'GO()');
+document.body.appendChild(button);
 
+//шахматные ячейки
 for (let i = 0; i < 64; i++) {
     let ceil = document.createElement('div');
     ceil.className = 'ceil';
@@ -11,13 +20,13 @@ for (let i = 0; i < 64; i++) {
 
 let ceil = document.getElementsByClassName('ceil');
 
-let x = 1, y = 8; // начальные координаты
+let x = 1, y = 8; //начальные координаты
 
-for (let i = 0; i < ceil.length; i++) { // координаты для всех ячеек
+for (let i = 0; i < ceil.length; i++) { //координаты для всех ячеек
 
-    if (x > 8) { // если х больше 8, то переходим на новы ряд (y--) и начинаем х с 1
+    if (x > 8) { //если х больше 8, то переходим на новый ряд (y--) и начинаем х с 1
         x = 1;
-        y--
+        y--;
     }
 
     ceil[i].setAttribute('posX', x);
@@ -31,26 +40,21 @@ for (let i = 0; i < ceil.length; i++) { // координаты для всех 
     }
 }
 
-ceil[0].classList.add('current'); // место коня в начале
+ceil[0].classList.add('current'); //место коня в начале
 ceil[0].classList.add('calculated'); //класс в качестве признака, что конь уже был на ячейке
 
-let step = 1; //номер хода, который будет отображаться в ячейке
+let step = 1; //номер хода, который будет отображаться в ячейке. Начальное значение.
 
-ceil[0].innerHTML = step;
+ceil[0].innerHTML = step; // вывод номера хода в ячейку
 
 //текущие координаты коня
 let currentX = ceil[0].getAttribute('posX');
 let currentY = ceil[0].getAttribute('posY');
 
-let button = document.createElement('button');
-button.innerHTML = 'GO';
-button.classList.add('button');
-button.setAttribute('onClick', 'GO()');
-document.body.appendChild(button);
-
 var interval; // интервал между ходами коня
 
-function GO(){
+//функция запуска по кнопке
+function GO() {
     button.innerHTML = "Restart";
     interval = setInterval(() => {
         nextStep();
@@ -59,60 +63,13 @@ function GO(){
 
 function nextStep() {
     // возможные ходы коня
-    let vars = [
-        document.querySelector('[posX="' + (+currentX + 1) + '"][posY="' + (+currentY + 2) + '"]'),
-        document.querySelector('[posX="' + (+currentX + 2) + '"][posY="' + (+currentY + 1) + '"]'),
-        document.querySelector('[posX="' + (+currentX + 2) + '"][posY="' + (+currentY - 1) + '"]'),
-        document.querySelector('[posX="' + (+currentX + 1) + '"][posY="' + (+currentY - 2) + '"]'),
-        document.querySelector('[posX="' + (+currentX - 1) + '"][posY="' + (+currentY - 2) + '"]'),
-        document.querySelector('[posX="' + (+currentX - 2) + '"][posY="' + (+currentY - 1) + '"]'),
-        document.querySelector('[posX="' + (+currentX - 2) + '"][posY="' + (+currentY + 1) + '"]'),
-        document.querySelector('[posX="' + (+currentX - 1) + '"][posY="' + (+currentY + 2) + '"]')
-    ];
-
-    for (let i = vars.length - 1; i >= 0; i--) { // с конца чтобы не изменять индекс при удалении
-        if (!vars[i] || vars[i].classList.contains('calculated')) {
-            vars.splice(i, 1);
-        }
-    }
+    let vars = possibleTurns(currentX, currentY); //подбор возможных ходов коня
 
     if (vars.length > 0) {
 
-        let nextArr = [];
+        let index = choiceNextStep(vars); //выбор следующего хода (минимальное кол-во возможных ходов)
 
-        function choiceNextStep() {
-
-            for (let i = 0; i < vars.length; i++) {
-                let nextX = vars[i].getAttribute('posX');
-                let nextY = vars[i].getAttribute('posY');
-                let nextVars = [
-                    document.querySelector('[posX="' + (+nextX + 1) + '"][posY="' + (+nextY + 2) + '"]'),
-                    document.querySelector('[posX="' + (+nextX + 2) + '"][posY="' + (+nextY + 1) + '"]'),
-                    document.querySelector('[posX="' + (+nextX + 2) + '"][posY="' + (+nextY - 1) + '"]'),
-                    document.querySelector('[posX="' + (+nextX + 1) + '"][posY="' + (+nextY - 2) + '"]'),
-                    document.querySelector('[posX="' + (+nextX - 1) + '"][posY="' + (+nextY - 2) + '"]'),
-                    document.querySelector('[posX="' + (+nextX - 2) + '"][posY="' + (+nextY - 1) + '"]'),
-                    document.querySelector('[posX="' + (+nextX - 2) + '"][posY="' + (+nextY + 1) + '"]'),
-                    document.querySelector('[posX="' + (+nextX - 1) + '"][posY="' + (+nextY + 2) + '"]')
-                ];
-
-                for (let i = nextVars.length - 1; i >= 0; i--) { // с конца чтобы не изменять индекс при удалении
-                    if (!nextVars[i] || nextVars[i].classList.contains('calculated')) {
-                        nextVars.splice(i, 1);
-                    }
-                }
-
-                nextArr.push(nextVars.length);
-            }
-            return nextArr;
-        }
-
-        nextArr = choiceNextStep();
-
-        let min = Math.min.apply(null, nextArr); // минимальный элемент массива
-        let index = nextArr.indexOf(min); // индекс минимального элемента в массиве
-
-        step++;
+        step++; // увеличивается номер хода
         document.querySelector('.current').classList.remove('current'); // убрать коня с ячейки, где был
 
         vars[index].classList.add('current'); //добавить коня
@@ -128,4 +85,41 @@ function nextStep() {
     } else {
         location.reload(true);
     }
+}
+
+//выбор следующего хода (минимальное кол-во возможных ходов)
+function choiceNextStep(arr) {
+    let nextArr = [];
+
+    for (let i = 0; i < arr.length; i++) {
+        let nextX = arr[i].getAttribute('posX');
+        let nextY = arr[i].getAttribute('posY');
+        let nextVars = possibleTurns(nextX, nextY);
+
+        nextArr.push(nextVars.length);
+    }
+
+    let min = Math.min.apply(null, nextArr); // минимальный элемент массива
+    return nextArr.indexOf(min); // индекс минимального элемента в массиве
+}
+
+//подбор возможных ходов коня
+function possibleTurns(X, Y) {
+    let vars = [
+        document.querySelector('[posX="' + (+X + 1) + '"][posY="' + (+Y + 2) + '"]'),
+        document.querySelector('[posX="' + (+X + 2) + '"][posY="' + (+Y + 1) + '"]'),
+        document.querySelector('[posX="' + (+X + 2) + '"][posY="' + (+Y - 1) + '"]'),
+        document.querySelector('[posX="' + (+X + 1) + '"][posY="' + (+Y - 2) + '"]'),
+        document.querySelector('[posX="' + (+X - 1) + '"][posY="' + (+Y - 2) + '"]'),
+        document.querySelector('[posX="' + (+X - 2) + '"][posY="' + (+Y - 1) + '"]'),
+        document.querySelector('[posX="' + (+X - 2) + '"][posY="' + (+Y + 1) + '"]'),
+        document.querySelector('[posX="' + (+X - 1) + '"][posY="' + (+Y + 2) + '"]')
+    ];
+
+    for (let i = vars.length - 1; i >= 0; i--) { // с конца чтобы не изменять индекс при удалении
+        if (!vars[i] || vars[i].classList.contains('calculated')) {
+            vars.splice(i, 1);
+        }
+    }
+    return vars;
 }

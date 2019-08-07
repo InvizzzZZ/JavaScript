@@ -102,3 +102,7 @@ function getElementPos(elem) {
         top: top
     };
 }
+
+//Получить или изменить состояние чекбокса (птички) можно так:
+    var isChecked=элемент.checked; // получаем состояние checkbox
+элемент.checked=false; // устанавливаем новое состояние checkbox
