@@ -3,7 +3,7 @@
 var chessboard = [0, 0, 0, 0, 0, 0, 0, 0];
 var solutions = [];
 var index = 0;
-
+debugger;
 do {
     if (checking()) {
         if (index === 7) {
@@ -26,7 +26,7 @@ p.innerText = 'Найдено ' + solutions.length + ' решения';
 
 function f() {
     var n = +prompt('Введите номер решения от 1 до 92');
-    return show(solutions[n-1], n);
+    return show(solutions[n - 1], n);
 }
 
 function checking() {
