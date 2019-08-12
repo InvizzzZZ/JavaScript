@@ -62,7 +62,6 @@ function submitMY(EO) {
 }
 
 function check(EO, elem) {
-    debugger;
     EO = EO || window.event;
     elem = elem || EO.currentTarget;
     let value = elem.value;
