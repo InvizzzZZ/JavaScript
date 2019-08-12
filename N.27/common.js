@@ -37,9 +37,10 @@ description.addEventListener('blur', check, false);
 function submitMY(EO) {
     EO = EO || window.event;
     EO.preventDefault();
+    let count = 0;
 
     let form = document.forms.IForm;
-    let elems = form.querySelectorAll('input, select');
+    let elems = form.querySelectorAll('input, select, textarea');
 
     for (let i = 0; i < elems.length; i++) {
         if (!check(EO, elems[i])) {
@@ -47,10 +48,12 @@ function submitMY(EO) {
             if (elems[i].name === 'radio') {
                 document.getElementById('reviews').scrollIntoView();
             }
-            return false;
+            count++;
         }
     }
-
+    if(count !== 0){
+        return false;
+    }
     form.submit();
 }
 
