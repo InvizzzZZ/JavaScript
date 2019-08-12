@@ -31,6 +31,9 @@ for (let i = 0; i < inputRadio.length; i++) {
 let inputReviews = document.getElementById('reviews');
 inputReviews.addEventListener('blur', check, false);
 
+let description = document.getElementById('description');
+description.addEventListener('blur', check, false);
+
 function submitMY(EO) {
     EO = EO || window.event;
     EO.preventDefault();
@@ -151,6 +154,17 @@ function check(EO, elem) {
     if (name === 'heading') {
         let selectHeading = form.elements.heading;
         if (selectHeading.value === '2') {
+            if (!document.getElementById('span' + name)) {
+                createError();
+            }
+            return false;
+        }
+        removeError();
+        return true;
+    }
+
+    if (name === 'description') {
+        if (!elem.value) {
             if (!document.getElementById('span' + name)) {
                 createError();
             }
