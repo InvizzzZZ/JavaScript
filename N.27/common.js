@@ -51,13 +51,6 @@ function submitMY(EO) {
         }
     }
 
-    for (let i = 0; i < select.length; i++) {
-        if (!check(EO, elems[i])) {
-            elems[i].focus();
-            return false;
-        }
-    }
-
     form.submit();
 }
 
