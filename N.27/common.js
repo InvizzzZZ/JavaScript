@@ -21,7 +21,7 @@ let inputEmail = document.getElementById('email');
 inputEmail.addEventListener('blur', check, false);
 
 let select = document.getElementById('heading');
-select.addEventListener('blur', check, false);
+select.addEventListener('change', check, false);
 
 let inputRadio = form.elements.radio;
 for (let i = 0; i < inputRadio.length; i++) {
