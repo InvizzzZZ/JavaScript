@@ -25,11 +25,11 @@ select.addEventListener('blur', check, false);
 
 let inputRadio = form.elements.radio;
 for (let i = 0; i < inputRadio.length; i++) {
-    inputRadio[i].addEventListener('blur', check, false);
+    inputRadio[i].addEventListener('change', check, false);
 }
 
 let inputReviews = document.getElementById('reviews');
-inputReviews.addEventListener('blur', check, false);
+inputReviews.addEventListener('change', check, false);
 
 let description = document.getElementById('description');
 description.addEventListener('blur', check, false);
@@ -148,7 +148,7 @@ function check(EO, elem) {
     }
     if (name === 'heading') {
         let selectHeading = form.elements.heading;
-        if (selectHeading.value === '2') {
+        if (selectHeading.value === '1') {
             if (!document.getElementById('span' + name)) {
                 createError();
             }
