@@ -18,13 +18,13 @@ function _mouseDown(EO) {
 
     for (let i = elems.length - 1; i >= 0; i--) {
         elems[i].style.position = 'absolute';
-        elems[i].style.top = Math.round(+elems[i].offsetTop) + 'px';
-        elems[i].style.left = Math.round(+elems[i].offsetLeft) + 'px';
+        elems[i].style.top = elems[i].offsetTop + 'px';
+        elems[i].style.left = elems[i].offsetLeft + 'px';
     }
 
     var coords = getCoords(elem);
-    var shiftX = Math.round(EO.pageX - coords.left);
-    var shiftY = Math.round(EO.pageY - coords.top);
+    var shiftX = EO.pageX - coords.left;
+    var shiftY = EO.pageY - coords.top;
 
     elem.style.zIndex = index++;
 
@@ -36,8 +36,8 @@ function _mouseDown(EO) {
 
         EO.preventDefault();
 
-        elem.style.left = Math.round(EO.pageX - shiftX) + 'px';
-        elem.style.top = Math.round(EO.pageY - shiftY) + 'px';
+        elem.style.left = EO.pageX - shiftX + 'px';
+        elem.style.top = EO.pageY - shiftY + 'px';
     }
 
     elem.addEventListener('mouseup', _mouseUp, false);
@@ -54,9 +54,28 @@ function _mouseDown(EO) {
 }
 
 function getCoords(elem) {
-    var box = elem.getBoundingClientRect();
+    // var box = elem.getBoundingClientRect();
+    // return {
+    //     top: box.top + pageYOffset,
+    //     left: box.left + pageXOffset
+    // };
+
+    var bbox=elem.getBoundingClientRect();
+
+    var body=document.body;
+    var docEl=document.documentElement;
+
+    var scrollTop=window.pageYOffset||docEl.scrollTop||body.scrollTop;
+    var scrollLeft=window.pageXOffset||docEl.scrollLeft||body.scrollLeft;
+
+    var clientTop=docEl.clientTop||body.clientTop||0;
+    var clientLeft=docEl.clientLeft||body.clientLeft||0;
+
+    var top=bbox.top+scrollTop-clientTop;
+    var left=bbox.left+scrollLeft-clientLeft;
+
     return {
-        top: Math.round(box.top + pageYOffset),
-        left: Math.round(box.left + pageXOffset)
+        left: left,
+        top: top
     };
 }
