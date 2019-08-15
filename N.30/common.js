@@ -1,9 +1,15 @@
 'use strict';
 
-var elems = document.querySelectorAll('img');
+window.addEventListener('load', updateIMG, false);
 
-for (let i = 0; i < elems.length; i++) {
-    elems[i].addEventListener('mousedown', _mouseDown, false);
+function updateIMG(){
+    var elems = document.querySelectorAll('img');
+    for (let i = elems.length - 1; i >= 0; i--) {
+        elems[i].style.position = 'absolute';
+        elems[i].style.top = elems[i].offsetTop + 'px';
+        elems[i].style.left = elems[i].offsetLeft + 'px';
+        elems[i].addEventListener('mousedown', _mouseDown, false);
+    }
 }
 
 var index = 1;
@@ -13,14 +19,6 @@ function _mouseDown(EO) {
     let elem = EO.target;
 
     EO.preventDefault();
-
-    var elems = document.querySelectorAll('img');
-
-    for (let i = elems.length - 1; i >= 0; i--) {
-        elems[i].style.position = 'absolute';
-        elems[i].style.top = elems[i].offsetTop + 'px';
-        elems[i].style.left = elems[i].offsetLeft + 'px';
-    }
 
     var coords = getCoords(elem);
     var shiftX = EO.pageX - coords.left;
