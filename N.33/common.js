@@ -97,7 +97,7 @@ function createClock() {
     let degHour = (currTime.getHours() * 60 * 60 + currTime.getMinutes() * 60 + currTime.getSeconds()) * 720 / 86400 - 90 + 0.008333333; // начальный угол для часовой стрелки
     hourArrow.style.transform = "rotate(" + degHour + "deg)"; // начальное положение часовой стрелки
 
-//интервал для времени
+//интервал для времени и стрелок
     let intervalTime = setInterval(() => {
         var currTime = new Date();
         document.getElementById('time').innerHTML = formatDateTime(currTime);
