@@ -84,6 +84,7 @@ function createClock() {
     let time = document.createElement('span');
     time.id = 'time';
     time.classList.add('time');
+    time.innerHTML = formatDateTime(currTime);
     clockFace.appendChild(time);
 //конец
 
