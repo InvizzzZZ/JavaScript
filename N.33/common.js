@@ -88,35 +88,26 @@ function createClock() {
     clockFace.appendChild(time);
 //конец
 
+    let degSec = currTime.getSeconds() * 360 / 60 - 90 + 6; // начальный угол для секундной стрелки
+    secondArrow.style.transform = "rotate(" + degSec + "deg)"; // начальное положение секундной стрелки
+
+    let degMin = (currTime.getMinutes() * 60 + currTime.getSeconds()) * 360 / 3600 - 90 + 0.1; // начальный угол для минутной стрелки
+    minuteArrow.style.transform = "rotate(" + degMin + "deg)"; // начальное положение минутной стрелки
+
+    let degHour = (currTime.getHours() * 60 * 60 + currTime.getMinutes() * 60 + currTime.getSeconds()) * 720 / 86400 - 90 + 0.008333333; // начальный угол для часовой стрелки
+    hourArrow.style.transform = "rotate(" + degHour + "deg)"; // начальное положение часовой стрелки
+
 //интервал для времени
     let intervalTime = setInterval(() => {
         var currTime = new Date();
         document.getElementById('time').innerHTML = formatDateTime(currTime);
-    }, 1000);
-//конец
 
-    let degSec = currTime.getSeconds() * 360 / 60 - 90 + 6; // начальный угол для секундной стрелки
-    secondArrow.style.transform = "rotate(" + degSec + "deg)"; // начальное положение секундной стрелки
-//интервал для секундной стрелки
-    let intervalSeconds = setInterval(function () {
         secondArrow.style.transform = "rotate(" + degSec + "deg)";
         degSec = (degSec + 6) % 360; // каждую секунду секундная стрелка смещается на 6 градусов
-    }, 1000);
-//конец
 
-    let degMin = (currTime.getMinutes() * 60 + currTime.getSeconds()) * 360 / 3600 - 90 + 0.1; // начальный угол для минутной стрелки
-    minuteArrow.style.transform = "rotate(" + degMin + "deg)"; // начальное положение минутной стрелки
-//интервал для минутной стрелки
-    let intervalMinutes = setInterval(function () {
         minuteArrow.style.transform = "rotate(" + degMin + "deg)";
         degMin = (degMin + 0.1) % 360; // каждую секунду минутная стрелка смещается на 0.1 градусов
-    }, 1000);
-//конец
 
-    let degHour = (currTime.getHours() * 60 * 60 + currTime.getMinutes() * 60 + currTime.getSeconds()) * 720 / 86400 - 90 + 0.008333333; // начальный угол для часовой стрелки
-    hourArrow.style.transform = "rotate(" + degHour + "deg)"; // начальное положение часовой стрелки
-//интервал для часовой стрелки
-    let intervalHours = setInterval(function () {
         hourArrow.style.transform = "rotate(" + degHour + "deg)";
         degHour = (degHour + 0.008333333) % 360; // каждую секунду часовая стрелка смещается на 0.008333333 градусов
     }, 1000);
