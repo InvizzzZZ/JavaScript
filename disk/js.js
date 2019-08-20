@@ -11,8 +11,9 @@ center.style.top = (disk.offsetHeight / 2) - (center.offsetHeight / 2) + 'px';
 
 let time = document.createElement('span');
 time.id = 'time';
-time.classList.add('time');
 time.innerHTML = '00:00:000';
+time.style.display = 'none';
+time.classList.add('time');
 document.body.appendChild(time);
 
 let button = document.createElement('button');
@@ -22,7 +23,7 @@ document.body.appendChild(button);
 
 let audio = document.createElement('audio');
 audio.style.display = 'none';
-audio.src ='1.mp3';
+audio.src = '1.mp3';
 document.body.appendChild(audio);
 
 let track = document.getElementById('track');
@@ -43,13 +44,13 @@ function fff() {
     }
 }
 
-
 button.addEventListener('click', play, false);
 
 function play() {
     if (!audio.classList.contains('clicked')) {
         audio.classList.add('clicked');
         audio.play();
+        time.style.display = 'inline';
         disk.style.transform = 'rotate(1080deg)';
         disk.style.transitionDuration = audio.duration + 's';
         button.textContent = 'Pause';
@@ -61,8 +62,9 @@ function play() {
             let miliSec = str.slice(str.indexOf('.'), str.indexOf('.') + 4).replace('.', '');
             time.innerHTML = str0l(minute, 2) + ":" + str0l(sec, 2) + ":" + str0l(miliSec, 3);
 
-            if (audio.currentTime === audio.duration) {
+            if (audio.ended) {
                 audio.classList.remove('clicked');
+                disk.style.transform = 'none';
                 button.textContent = 'Play';
             }
 
