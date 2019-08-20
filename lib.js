@@ -106,3 +106,20 @@ function getElementPos(elem) {
 //Получить или изменить состояние чекбокса (птички) можно так:
     var isChecked=элемент.checked; // получаем состояние checkbox
 элемент.checked=false; // устанавливаем новое состояние checkbox
+
+//форматирует переданную дату-время в формате дд.мм.гггг чч:мм:сс
+function formatDateTime(dt) {
+    var hours = dt.getHours();
+    var minutes = dt.getMinutes();
+    var seconds = dt.getSeconds();
+    return str0l(hours, 2) + ':' + str0l(minutes, 2) + ':' + str0l(seconds, 2);
+}
+
+//дополняет строку val слева нулями до длины Len
+function str0l(val, len) {
+    var strVal = val.toString();
+    while (strVal.length < len)
+        strVal = '0' + strVal;
+    return strVal;
+}
+

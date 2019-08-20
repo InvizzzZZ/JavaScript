@@ -1,6 +1,6 @@
 'use strict';
 
-window.addEventListener('load', createClock, false);
+window.addEventListener('DOMContentLoaded', createClock, false);
 
 function createClock() {
     //ширина и высота дива часов
