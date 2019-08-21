@@ -1,6 +1,6 @@
 'use strict';
 
-window.addEventListener('DOMContentLoaded', createClock, false);
+window.addEventListener('load', createClock, false);
 
 function createClock() {
     //ширина и высота дива часов
@@ -88,13 +88,16 @@ function createClock() {
     clockFace.appendChild(time);
 //конец
 
-    let degSec = currTime.getSeconds() * 360 / 60 - 90 + (360 / 60); // начальный угол для секундной стрелки
+    // let degSec = currTime.getSeconds() * 360 / 60 - 90 + (360 / 60); // начальный угол для секундной стрелки
+    let degSec = currTime.getSeconds() * 360 / 60 - 90; // начальный угол для секундной стрелки
     secondArrow.style.transform = "rotate(" + degSec + "deg)"; // начальное положение секундной стрелки
 
-    let degMin = (currTime.getMinutes() * 60 + currTime.getSeconds()) * 360 / (60 * 60) - 90 + (360 / 60 / 60); // начальный угол для минутной стрелки
+    // let degMin = (currTime.getMinutes() * 60 + currTime.getSeconds()) * 360 / (60 * 60) - 90 + (360 / 60 / 60); // начальный угол для минутной стрелки
+    let degMin = (currTime.getMinutes() * 60 + currTime.getSeconds()) * 360 / (60 * 60) - 90; // начальный угол для минутной стрелки
     minuteArrow.style.transform = "rotate(" + degMin + "deg)"; // начальное положение минутной стрелки
 
-    let degHour = (currTime.getHours() * 60 * 60 + currTime.getMinutes() * 60 + currTime.getSeconds()) * (360 * 2) / (24 * 60 * 60) - 90 + (720 / 24 / 60 / 60); // начальный угол для часовой стрелки
+    // let degHour = (currTime.getHours() * 60 * 60 + currTime.getMinutes() * 60 + currTime.getSeconds()) * (360 * 2) / (24 * 60 * 60) - 90 + (360 * 2 / 24 / 60 / 60); // начальный угол для часовой стрелки
+    let degHour = (currTime.getHours() * 60 * 60 + currTime.getMinutes() * 60 + currTime.getSeconds()) * (360 * 2) / (24 * 60 * 60) - 90; // начальный угол для часовой стрелки
     hourArrow.style.transform = "rotate(" + degHour + "deg)"; // начальное положение часовой стрелки
 
 //интервал для времени и стрелок
@@ -104,16 +107,19 @@ function createClock() {
 
         secondArrow.style.transform = "rotate(" + degSec + "deg)";
         // degSec = (degSec + 6) % 360; // каждую секунду секундная стрелка смещается на 6 градусов
-        degSec = currTime.getSeconds() * 360 / 60 - 90 + (360 / 60); // угол для секундной стрелки каждую секунду
+        // degSec = currTime.getSeconds() * 360 / 60 - 90 + (360 / 60); // угол для секундной стрелки каждую секунду
+        degSec = currTime.getSeconds() * 360 / 60 - 90; // угол для секундной стрелки каждую секунду
 
         minuteArrow.style.transform = "rotate(" + degMin + "deg)";
         // degMin = (degMin + 0.1) % 360; // каждую секунду минутная стрелка смещается на 0.1 градусов
-        degMin = (currTime.getMinutes() * 60 + currTime.getSeconds()) * 360 / (60 * 60) - 90 + (360 / 60 / 60); // угол для минутной стрелки каждую секунду
+        // degMin = (currTime.getMinutes() * 60 + currTime.getSeconds()) * 360 / (60 * 60) - 90 + (360 / 60 / 60); // угол для минутной стрелки каждую секунду
+        degMin = (currTime.getMinutes() * 60 + currTime.getSeconds()) * 360 / (60 * 60) - 90; // угол для минутной стрелки каждую секунду
 
         hourArrow.style.transform = "rotate(" + degHour + "deg)";
         // degHour = (degHour + 0.008333333) % 360; // каждую секунду часовая стрелка смещается на 0.008333333 градусов
-        degHour = (currTime.getHours() * 60 * 60 + currTime.getMinutes() * 60 + currTime.getSeconds()) * (360 * 2) / (24 * 60 * 60) - 90 + (720 / 24 / 60 / 60); // угол для часовой стрелки каждую секунду
-    }, 1000);
+        // degHour = (currTime.getHours() * 60 * 60 + currTime.getMinutes() * 60 + currTime.getSeconds()) * (360 * 2) / (24 * 60 * 60) - 90 + (720 / 24 / 60 / 60); // угол для часовой стрелки каждую секунду
+        degHour = (currTime.getHours() * 60 * 60 + currTime.getMinutes() * 60 + currTime.getSeconds()) * (360 * 2) / (24 * 60 * 60) - 90; // угол для часовой стрелки каждую секунду
+    }, 100);
 //конец
 
 //позиционирование цифр на циферблате
