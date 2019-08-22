@@ -50,7 +50,7 @@ if (!solved) {
 
 
 numbers.sort(function () {
-    return Math.random() - .5;
+    return Math.random() - 0.5;
 });
 
 let elems = board.children;

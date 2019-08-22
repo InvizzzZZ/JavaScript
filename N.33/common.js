@@ -81,6 +81,7 @@ function createClock() {
 //конец
     var currTime = new Date(); //текущее время
 //время
+
     let time = document.createElement('span');
     time.id = 'time';
     time.classList.add('time');
@@ -107,19 +108,16 @@ function createClock() {
 
         secondArrow.style.transform = "rotate(" + degSec + "deg)";
         // degSec = (degSec + 6) % 360; // каждую секунду секундная стрелка смещается на 6 градусов
-        // degSec = currTime.getSeconds() * 360 / 60 - 90 + (360 / 60); // угол для секундной стрелки каждую секунду
-        degSec = currTime.getSeconds() * 360 / 60 - 90; // угол для секундной стрелки каждую секунду
+        degSec = currTime.getSeconds() * 360 / 60 - 90 + (360 / 60); // угол для секундной стрелки каждую секунду
 
         minuteArrow.style.transform = "rotate(" + degMin + "deg)";
         // degMin = (degMin + 0.1) % 360; // каждую секунду минутная стрелка смещается на 0.1 градусов
-        // degMin = (currTime.getMinutes() * 60 + currTime.getSeconds()) * 360 / (60 * 60) - 90 + (360 / 60 / 60); // угол для минутной стрелки каждую секунду
-        degMin = (currTime.getMinutes() * 60 + currTime.getSeconds()) * 360 / (60 * 60) - 90; // угол для минутной стрелки каждую секунду
+        degMin = (currTime.getMinutes() * 60 + currTime.getSeconds()) * 360 / (60 * 60) - 90 + (360 / 60 / 60); // угол для минутной стрелки каждую секунду
 
         hourArrow.style.transform = "rotate(" + degHour + "deg)";
         // degHour = (degHour + 0.008333333) % 360; // каждую секунду часовая стрелка смещается на 0.008333333 градусов
-        // degHour = (currTime.getHours() * 60 * 60 + currTime.getMinutes() * 60 + currTime.getSeconds()) * (360 * 2) / (24 * 60 * 60) - 90 + (720 / 24 / 60 / 60); // угол для часовой стрелки каждую секунду
-        degHour = (currTime.getHours() * 60 * 60 + currTime.getMinutes() * 60 + currTime.getSeconds()) * (360 * 2) / (24 * 60 * 60) - 90; // угол для часовой стрелки каждую секунду
-    }, 100);
+        degHour = (currTime.getHours() * 60 * 60 + currTime.getMinutes() * 60 + currTime.getSeconds()) * (360 * 2) / (24 * 60 * 60) - 90 + (360 * 2 / 24 / 60 / 60); // угол для часовой стрелки каждую секунду
+    }, 1000);
 //конец
 
 //позиционирование цифр на циферблате
