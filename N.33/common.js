@@ -18,13 +18,12 @@ function createClock() {
     let clockFace = document.createElement('div');
     clockFace.id = 'clockFace';
     clockFace.style.width = clockWidthHeight + 'px';
-    clockFace.style.height = clockWidthHeight + 'px';
-    clockFace.style.lineHeight = 0.625 * clockWidthHeight + 'px';
+    clockFace.style.height = clockWidthHeight + 'px';    clockFace.style.lineHeight = 0.625 * clockWidthHeight + 'px';
     clockFace.classList.add('clockFace');
     document.body.appendChild(clockFace);
 //конец
 
-//часовая стрелка
+//часовая стрелка -
     let hourArrow = document.createElement('div');
     hourArrow.style.width = radius * 0.8 + 'px';
     hourArrow.style.height = clockWidthHeight * 0.02 + 'px';
