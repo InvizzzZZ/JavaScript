@@ -9,7 +9,7 @@ function createClock() {
     const clockRadius = Math.round(clockWidthHeight * Math.sqrt(2)) / 2;
 
 //радиус круга на котором располгаются цифры
-    var radius = clockRadius * 0.6;
+    const radius = clockRadius * 0.6;
 
 //угол для первой цифры
     var angleGrad = 0;
@@ -18,12 +18,13 @@ function createClock() {
     let clockFace = document.createElement('div');
     clockFace.id = 'clockFace';
     clockFace.style.width = clockWidthHeight + 'px';
-    clockFace.style.height = clockWidthHeight + 'px';    clockFace.style.lineHeight = 0.625 * clockWidthHeight + 'px';
+    clockFace.style.height = clockWidthHeight + 'px';
+    clockFace.style.lineHeight = 0.625 * clockWidthHeight + 'px';
     clockFace.classList.add('clockFace');
     document.body.appendChild(clockFace);
 //конец
 
-//часовая стрелка -
+//часовая стрелка
     let hourArrow = document.createElement('div');
     hourArrow.style.width = radius * 0.8 + 'px';
     hourArrow.style.height = clockWidthHeight * 0.02 + 'px';
@@ -65,7 +66,7 @@ function createClock() {
 //конец
 
 //цифры
-    for (let i = 12; i > 0; i--) {
+    for (let i = 12; i >= 1; i--) {
         var angleRad = angleGrad / 180 * Math.PI;
         let number = document.createElement('div');
         number.style.width = clockWidthHeight * 0.125 + 'px';
@@ -78,54 +79,49 @@ function createClock() {
         angleGrad -= 30;
     }
 //конец
-    var currTime = new Date(); //текущее время
-//время
 
+//время
     let time = document.createElement('span');
     time.id = 'time';
     time.classList.add('time');
-    time.innerHTML = formatDateTime(currTime);
     clockFace.appendChild(time);
 //конец
 
-    // let degSec = currTime.getSeconds() * 360 / 60 - 90 + (360 / 60); // начальный угол для секундной стрелки
-    let degSec = currTime.getSeconds() * 360 / 60 - 90; // начальный угол для секундной стрелки
-    secondArrow.style.transform = "rotate(" + degSec + "deg)"; // начальное положение секундной стрелки
-
-    // let degMin = (currTime.getMinutes() * 60 + currTime.getSeconds()) * 360 / (60 * 60) - 90 + (360 / 60 / 60); // начальный угол для минутной стрелки
-    let degMin = (currTime.getMinutes() * 60 + currTime.getSeconds()) * 360 / (60 * 60) - 90; // начальный угол для минутной стрелки
-    minuteArrow.style.transform = "rotate(" + degMin + "deg)"; // начальное положение минутной стрелки
-
-    // let degHour = (currTime.getHours() * 60 * 60 + currTime.getMinutes() * 60 + currTime.getSeconds()) * (360 * 2) / (24 * 60 * 60) - 90 + (360 * 2 / 24 / 60 / 60); // начальный угол для часовой стрелки
-    let degHour = (currTime.getHours() * 60 * 60 + currTime.getMinutes() * 60 + currTime.getSeconds()) * (360 * 2) / (24 * 60 * 60) - 90; // начальный угол для часовой стрелки
-    hourArrow.style.transform = "rotate(" + degHour + "deg)"; // начальное положение часовой стрелки
+    let ms = setArrows(); // выставляем стрелки и цифровые часы в начальное положение
 
 //интервал для времени и стрелок
     let intervalTime = setInterval(() => {
-        var currTime = new Date();
+        ms = setArrows();
+    }, 1010 - ms);
+
+//конец
+
+// вычисление положения стрелок и их выставление
+    function setArrows() {
+        let currTime = new Date();
+        let curr_ms = currTime.getMilliseconds(); // милисекунды тек. даты
+
         document.getElementById('time').innerHTML = formatDateTime(currTime);
 
+        let degSec = currTime.getSeconds() * 360 / 60 - 90; // угол для секундной стрелки каждую секунду
         secondArrow.style.transform = "rotate(" + degSec + "deg)";
-        // degSec = (degSec + 6) % 360; // каждую секунду секундная стрелка смещается на 6 градусов
-        degSec = currTime.getSeconds() * 360 / 60 - 90 + (360 / 60); // угол для секундной стрелки каждую секунду
 
+        let degMin = (currTime.getMinutes() * 60 + currTime.getSeconds()) * 360 / (60 * 60) - 90; // угол для минутной стрелки каждую секунду
         minuteArrow.style.transform = "rotate(" + degMin + "deg)";
-        // degMin = (degMin + 0.1) % 360; // каждую секунду минутная стрелка смещается на 0.1 градусов
-        degMin = (currTime.getMinutes() * 60 + currTime.getSeconds()) * 360 / (60 * 60) - 90 + (360 / 60 / 60); // угол для минутной стрелки каждую секунду
 
+        let degHour = (currTime.getHours() * 60 * 60 + currTime.getMinutes() * 60 + currTime.getSeconds()) * (360 * 2) / (24 * 60 * 60) - 90; // угол для часовой стрелки каждую секунду
         hourArrow.style.transform = "rotate(" + degHour + "deg)";
-        // degHour = (degHour + 0.008333333) % 360; // каждую секунду часовая стрелка смещается на 0.008333333 градусов
-        degHour = (currTime.getHours() * 60 * 60 + currTime.getMinutes() * 60 + currTime.getSeconds()) * (360 * 2) / (24 * 60 * 60) - 90 + (360 * 2 / 24 / 60 / 60); // угол для часовой стрелки каждую секунду
-    }, 1000);
-//конец
+
+        return curr_ms;
+    }
 
 //позиционирование цифр на циферблате
     function pos(clockFace, number) {
-        var clockFaceCenterX = clockFace.offsetLeft + clockFace.offsetWidth / 2;
-        var clockFaceCenterY = clockFace.offsetTop + clockFace.offsetHeight / 2;
+        let clockFaceCenterX = clockFace.offsetLeft + clockFace.offsetWidth / 2;
+        let clockFaceCenterY = clockFace.offsetTop + clockFace.offsetHeight / 2;
 
-        var numberCenterX = clockFaceCenterX + radius * Math.sin(angleRad);
-        var numberCenterY = clockFaceCenterY - radius * Math.cos(angleRad);
+        let numberCenterX = clockFaceCenterX + radius * Math.sin(angleRad);
+        let numberCenterY = clockFaceCenterY - radius * Math.cos(angleRad);
 
         number.style.left = Math.round(numberCenterX - number.offsetWidth / 2) + 'px';
         number.style.top = Math.round(numberCenterY - number.offsetHeight / 2) + 'px';
@@ -133,15 +129,15 @@ function createClock() {
 
 //форматирует переданную дату-время в формате дд.мм.гггг чч:мм:сс
     function formatDateTime(dt) {
-        var hours = dt.getHours();
-        var minutes = dt.getMinutes();
-        var seconds = dt.getSeconds();
+        let hours = dt.getHours();
+        let minutes = dt.getMinutes();
+        let seconds = dt.getSeconds();
         return str0l(hours, 2) + ':' + str0l(minutes, 2) + ':' + str0l(seconds, 2);
     }
 
 //дополняет строку val слева нулями до длины Len
     function str0l(val, len) {
-        var strVal = val.toString();
+        let strVal = val.toString();
         while (strVal.length < len)
             strVal = '0' + strVal;
         return strVal;
