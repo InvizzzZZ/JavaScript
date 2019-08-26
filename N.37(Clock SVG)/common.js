@@ -12,7 +12,7 @@ function createClock() {
 //радиус круга на котором располгаются цифры
     const radius = clockRadius * 0.8;
 
-//угол для первой цифры
+//угол для первой цифры //
     var angleGrad = 0;
 
     let svg = document.createElementNS("http://www.w3.org/2000/svg", 'svg');
