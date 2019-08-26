@@ -60,6 +60,7 @@ function createClock() {
         text.setAttribute("font-weight", "bold");
         text.setAttribute("fill", "#191970");
         text.setAttribute("text-anchor", "middle");
+        text.setAttribute("alignment-baseline", "central");
         text.textContent = i;
         svg.appendChild(text);
     }
