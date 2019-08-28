@@ -107,13 +107,13 @@ function checkAnswer(EO) {
         } else {
             block = document.createElement('div');
             block.classList.add('block');
+            block.style.paddingTop = '75px';
             block.style.fontSize = '20px';
+            block.style.lineHeight = '25px';
             if (count === questions.length) {
-                block.textContent = `Игра окончена Ваш результат ${count} из ${questions.length}!
-                Вы молодец!`;
-            }else{
-                block.textContent = `Игра окончена Ваш результат ${count} из ${questions.length}.
-                В следующий раз будет лучше`;
+                block.textContent = `Игра окончена Ваш результат ${count} из ${questions.length}! Вы молодец!`;
+            } else {
+                block.textContent = `Игра окончена Ваш результат ${count} из ${questions.length}. В следующий раз будет лучше`;
             }
             container.append(block);
             let button = document.createElement('button');
@@ -121,7 +121,9 @@ function checkAnswer(EO) {
             button.classList.add('button');
             container.append(button);
 
-            button.addEventListener('click', ()=>{location.reload();}, false);
+            button.addEventListener('click', () => {
+                location.reload();
+            }, false);
         }
     }, 1000);
 }

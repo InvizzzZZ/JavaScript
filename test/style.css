@@ -1,8 +1,10 @@
-*{
+* {
     box-sizing: border-box;
 }
 
-.container{
+/*блок для вопросов и ответов*/
+.container {
+    min-width: 450px;
     width: 60%;
     margin: 0 auto;
     background-color: #6892ff;
@@ -11,19 +13,21 @@
     border-radius: 10px;
 }
 
+/*блок вопроса*/
 .block {
     width: 80%;
     height: 200px;
     margin: 0 auto;
     background-color: #b860ff;
-    font-size: 40px ;
+    font-size: 40px;
     text-align: center;
     line-height: 200px;
     margin-bottom: 20px;
     border-radius: 10px;
 }
 
-.answer{
+/*блок ответа*/
+.answer {
     background-color: #4863ae;
     margin: 0 auto;
     display: inline-block;
@@ -38,7 +42,8 @@
     outline: none;
 }
 
-.button{
+.button {
+    margin-top: 20px;
     width: 170px;
     height: 50px;
     border-radius: 10px;
