@@ -1,4 +1,4 @@
-let map1 = new Map([  // первый вопрос
+let question1 = new Map([  // первый вопрос
     ['question', '2+2 = ?'],
     ['answer1', '2'],
     ['answer2', '3'],
@@ -6,7 +6,7 @@ let map1 = new Map([  // первый вопрос
     ['answer_true', '4']
 ]);
 
-let map2 = new Map([  // второй вопрос
+let question2 = new Map([  // второй вопрос
     ['question', 'Столица Беларуси?'],
     ['answer1', 'Минск'],
     ['answer2', 'Брест'],
@@ -14,7 +14,7 @@ let map2 = new Map([  // второй вопрос
     ['answer_true', 'Минск']
 ]);
 
-let map3 = new Map([  // третий вопрос
+let question3 = new Map([  // третий вопрос
     ['question', '3*3 = ?'],
     ['answer1', '9'],
     ['answer2', '8'],
@@ -28,7 +28,7 @@ var count_answer = 0; // кол-во ответов
 
 var block, answer1, answer2, answer3; // блок с вопросом, ответы на вопросы
 
-let questions = [map1, map2, map3]; // массив с вопросами
+let questions = [question1, question2, question3]; // массив с вопросами
 
 questions = questions.sort(function () {  // рандомно сортированный массив с вопросами
     return Math.random() - 0.5;
