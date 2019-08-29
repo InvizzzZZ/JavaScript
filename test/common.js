@@ -1,8 +1,24 @@
+'use strict';
+
+// при регистрации указываем на js-файл с кодом serviceWorker’а
+// получаем Promise объект
+navigator.serviceWorker.register(
+    'appCache.js'
+).then(function(registration) {
+    // при удачной регистрации имеем объект типа ServiceWorkerRegistration
+    console.log('ServiceWorker registration', registration);
+    // строкой ниже можно прекратить работу serviceWorker’а
+    //registration.unregister();
+}).catch(function(err) {
+    throw new Error('ServiceWorker error: ' + err);
+});
+
 let question1 = new Map([  // первый вопрос
     ['question', '2+2 = ?'],
     ['answer1', '2'],
     ['answer2', '3'],
     ['answer3', '4'],
+    ['answer4', '98'],
     ['answer_true', '4']
 ]);
 
@@ -11,6 +27,7 @@ let question2 = new Map([  // второй вопрос
     ['answer1', 'Минск'],
     ['answer2', 'Брест'],
     ['answer3', 'Витебск'],
+    ['answer4', 'Москва'],
     ['answer_true', 'Минск']
 ]);
 
@@ -19,6 +36,7 @@ let question3 = new Map([  // третий вопрос
     ['answer1', '9'],
     ['answer2', '8'],
     ['answer3', '2'],
+    ['answer4', '43'],
     ['answer_true', '9']
 ]);
 
@@ -26,7 +44,7 @@ var count = 0; // кол-во правильных ответов
 
 var count_answer = 0; // кол-во ответов
 
-var block, answer1, answer2, answer3; // блок с вопросом, ответы на вопросы
+var block, answer1, answer2, answer3, answer4; // блок с вопросом, ответы на вопросы
 
 let questions = [question1, question2, question3]; // массив с вопросами
 
@@ -47,6 +65,10 @@ function createQuestion(question) {  //функция, отрисовывающ�
     block.classList.add('block');
     block.textContent = question.get('question');
     container.append(block);
+
+    let answers_block = document.createElement('div');
+    answers_block.classList.add('answer_block');
+    container.appendChild(answers_block);
 
     answer1 = document.createElement('div'); // ответ 1
     answer1.textContent = question.get('answer1');
@@ -69,18 +91,26 @@ function createQuestion(question) {  //функция, отрисовывающ�
     answer3.setAttribute('answer_true', question.get('answer_true') + "");
     // container.append(answer3);
 
-    answers = [answer1, answer2, answer3]; // массив ответов
+    answer4 = document.createElement('div'); // ответ 3
+    answer4.textContent = question.get('answer4');
+    answer4.classList.add('answer');
+    answer4.setAttribute('value', question.get('answer4') + "");
+    answer4.setAttribute('answer_true', question.get('answer_true') + "");
+    // container.append(answer4);
+
+    let answers = [answer1, answer2, answer3, answer4]; // массив ответов
     answers.sort(function () { // отсортированный рандомно массив ответов
         return Math.random() - 0.5;
     });
 
     for (let i = 0; i < answers.length; i++) {
-        container.append(answers[i]);
+        answers_block.appendChild(answers[i]);
     }
 
     answer1.addEventListener('click', checkAnswer, false); //вешаем слушатель клика на каждый блок с ответом
     answer2.addEventListener('click', checkAnswer, false);
     answer3.addEventListener('click', checkAnswer, false);
+    answer4.addEventListener('click', checkAnswer, false);
 }
 
 function checkAnswer(EO) {
@@ -105,6 +135,7 @@ function checkAnswer(EO) {
     answer1.removeEventListener('click', checkAnswer, false); // чтобы нельзя было кликать после первого клика
     answer2.removeEventListener('click', checkAnswer, false);
     answer3.removeEventListener('click', checkAnswer, false);
+    answer4.removeEventListener('click', checkAnswer, false);
 
     setTimeout(() => { //тайм-аут для отображения следующего вопроса
         while (container.firstChild) { // удаляем отрисованный вопрос
@@ -116,19 +147,23 @@ function checkAnswer(EO) {
         } else {
             block = document.createElement('div');
             block.classList.add('block');
-            block.style.paddingTop = '75px';
-            block.style.fontSize = '20px';
-            block.style.lineHeight = '25px';
+            block.style.fontSize = '25px';
             if (count === questions.length) {
-                block.textContent = `Игра окончена Ваш результат ${count} из ${questions.length}! Вы молодец!`;
+                block.textContent = 'Игра окончена. Ваш результат ' + count + ' из ' + questions.length + '!';
+                let message = document.createElement('div');
+                message.textContent = 'Вы молодец!';
+                block.appendChild(message);
             } else {
-                block.textContent = `Игра окончена Ваш результат ${count} из ${questions.length}. В следующий раз будет лучше`;
+                block.textContent = 'Игра окончена. Ваш результат ' + count + ' из ' + questions.length + '.';
+                let message = document.createElement('div');
+                message.textContent = 'В следующий раз точно будет лучше.';
+                block.appendChild(message);
             }
             container.append(block);
             let button = document.createElement('button');
             button.innerText = 'Попробовать снова';
             button.classList.add('button');
-            container.append(button);
+            container.appendChild(button);
 
             button.addEventListener('click', () => {
                 location.reload();

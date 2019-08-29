@@ -1,12 +1,19 @@
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 /*блок для вопросов и ответов*/
 .container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    align-items: center;
+
     min-width: 350px;
-    width: 60%;
-    margin: 0 auto;
+    width: 40%;
+    margin: 20px auto 20px auto;
     background-color: #6892ff;
     padding: 20px;
     text-align: center;
@@ -15,38 +22,55 @@
 
 /*блок вопроса*/
 .block {
-    width: 80%;
+    display: table-cell;
+    vertical-align: middle;
     height: 200px;
-    margin: 0 auto;
+    padding-top: 60px;
     background-color: #b860ff;
     font-size: 40px;
-    text-align: center;
-    line-height: 200px;
     margin-bottom: 20px;
     border-radius: 10px;
+}
+
+.answer_block {
+    display: grid;
+    align-items: center;
+
+    grid-gap: 30px;
+    grid-template-columns: repeat(2, 0.5fr);
+    grid-template-rows: repeat(2, 90px);
+
+    margin-top: 20px;
 }
 
 /*блок ответа*/
 .answer {
     background-color: #4863ae;
-    margin: 0 auto;
-    display: inline-block;
     border: 1px solid black;
     border-radius: 10px;
-    height: 70px;
-    width: 100px;
     text-align: center;
-    line-height: 70px;
-    font-size: 25px;
-    margin-bottom: 40px;
+    line-height: 90px;
+    font-size: 28px;
     outline: none;
 }
 
 .button {
-    margin-top: 20px;
+    margin: 20px auto 20px auto;
     width: 170px;
     height: 50px;
+    border: none;
+    box-shadow: 0 3px 3px 0;
     border-radius: 10px;
-    font-size: 16px;
-    font-weight: bold;
+    font-size: 18px;
+    background-color: #4863ae;
 }
+
+@media all and (max-width: 500px) {
+    .container {
+        width: 100%;
+        border-radius: 0;
+        margin: 0;
+    }
+}
+
+
