@@ -5,7 +5,7 @@ body{
 
 /*!*циферблат*!*/
 /*.clockFace{*/
-/*    border-radius: 50%;*/
+/*    border-diameter: 50%;*/
 /*    background-color: #cbc042;*/
 /*    position: relative;*/
 /*    text-align: center;*/
@@ -13,7 +13,7 @@ body{
 
 /*!*цифры часов*!*/
 /*.number{*/
-/*    border-radius: 50%;*/
+/*    border-diameter: 50%;*/
 /*    background-color: #1ba169;*/
 /*    position: absolute;*/
 /*    z-index: 1;*/
@@ -33,7 +33,7 @@ body{
 /*.center{*/
 /*    width: 20px;*/
 /*    height: 20px;*/
-/*    border-radius: 50%;*/
+/*    border-diameter: 50%;*/
 /*    background-color: #000000;*/
 /*    position: absolute;*/
 /*    z-index: 3;*/
