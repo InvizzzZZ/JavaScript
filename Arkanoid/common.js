@@ -69,11 +69,15 @@ let brickWidth = brick.offsetWidth + 2; // 2 ширина рамки 1 + 1
 // paddle
 let paddleProps = {
     posX: field.offsetWidth / 2 + container.offsetLeft - paddle.offsetWidth / 2,
+    posY: container.offsetTop + container.offsetHeight - paddle.offsetHeight,
 
     speed: 0,
 
     update: function () {
         paddle.style.left = this.posX + "px";
+        paddle.style.top = this.posY + "px";
+        console.error(container.offsetHeight + '   fsdfsd');
+        console.error(container.offsetWidth + '   fsdfsd');
     }
 };
 

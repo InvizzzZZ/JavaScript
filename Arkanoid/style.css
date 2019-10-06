@@ -8,6 +8,13 @@ body {
     /*cursor: none !important;*/
     text-align: center;
     background-color: #000000;
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    justify-items: center;
+    align-items: center;
+
 }
 
 .screen{
@@ -67,8 +74,12 @@ body {
     grid-gap: 2px;
     grid-template-columns: 1fr;
     grid-template-rows: 0.5fr 11fr;
+    /*height: 1000px;*/
+    /*width: 1000px;*/
     height: 100vh;
+    max-height: 1080px;
     width: 100%;
+    max-width: 1920px;
     margin: 0 auto;
     border: 2px solid black;
     align-items: start;
@@ -152,7 +163,7 @@ body {
     border: 1px solid #777;
     background: linear-gradient(to bottom, #cdd 0%, #777 100%);
     position: absolute;
-    top: 96vh;
+    /*top: 96vh;*/
     border-radius: 7px;
 }
 
@@ -274,12 +285,12 @@ img{
 /*    }*/
 /*}*/
 
-@media all and (max-width:  1536px) and (max-height: 2048px ) {
-    /*#container{*/
-    /*    width: 1080px;*/
-    /*    height: 1920px;*/
-    /*}*/
-    #startScreen > span > span{
-        font-size: 50px;
-    }
-}
+/*@media all and (max-width:  1536px) and (max-height: 2048px ) {*/
+/*    !*#container{*!*/
+/*    !*    width: 1080px;*!*/
+/*    !*    height: 1920px;*!*/
+/*    !*}*!*/
+/*    #startScreen > span > span{*/
+/*        font-size: 50px;*/
+/*    }*/
+/*}*/
