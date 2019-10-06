@@ -30,10 +30,12 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-size: 10vh;
+    max-font-size: 40px;
 }
 
 #startScreen > span > span{
     font-size: 4vh;
+    max-font-size: 35px;
     background: #ffffff;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -43,12 +45,14 @@ body {
     display: none;
 }
 #endScreen > span{
-    font-size: 5vh;
+    font-size: 4vh;
+    max-font-size: 35px;
     color: #ffffff;
 }
 
 #endScreen > span > span{
     font-size: 4vh;
+    max-font-size: 35px;
     background: #ffffff;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -59,6 +63,7 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-size: 5vh;
+    max-font-size: 40px;
 }
 
 #container {
