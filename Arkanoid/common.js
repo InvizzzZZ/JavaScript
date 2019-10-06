@@ -62,7 +62,7 @@ window.onload = () => {
     leftArrow.style.left = 40 + 'px';
 
     rightArrow.style.top = container.offsetHeight - container.offsetHeight / 4 + 'px';
-    rightArrow.style.right = 40 + 'px';
+    rightArrow.style.right = document.getElementById('right').offsetWidth + 40 + 'px';
 
     titleMusic.muted = false;
     titleMusic.play()
@@ -343,7 +343,7 @@ function onResize() {
         leftArrow.style.left = 40 + 'px';
 
         rightArrow.style.top = container.offsetHeight - container.offsetHeight / 4 + 'px';
-        rightArrow.style.right = 40 + 'px';
+        rightArrow.style.right = document.getElementById('right').offsetWidth + 40 + 'px';
     }, 200);
 }
 
@@ -368,6 +368,7 @@ function unpressed() {
 
 
 function onTouchStart(EO) {
+    alert('touch!');
     EO = EO || window.event;
     EO.preventDefault();
     touchPosX = paddleProps.posX;

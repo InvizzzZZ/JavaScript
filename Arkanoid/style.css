@@ -216,16 +216,17 @@ img{
 #leftArrow, #rightArrow{
     z-index: 2;
     position: absolute;
-    opacity: 0.5;
-    border: 2px dotted black;
-    border-radius: 50%;
-    background-color: #cbc042;
+
+    /*border: 2px dotted black;*/
+    /*border-radius: 50%;*/
+    /*background-color: #cbc042;*/
 }
 
 #leftArrow > img, #rightArrow > img{
     width: 5vw;
-    min-width: 80px;
+    min-width: 120px;
     height: auto;
+    opacity: 0.5;
 }
 
 #play{
@@ -241,8 +242,7 @@ img{
 }
 
 
-#play:hover, #sound:hover, #pause_resume:hover, #leftArrow:hover, #rightArrow:hover {
-
+#play:hover, #sound:hover, #pause_resume:hover {
     transform: scale(1.1);
 }
 
