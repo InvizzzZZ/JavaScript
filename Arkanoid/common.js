@@ -69,7 +69,7 @@ let brickWidth = brick.offsetWidth + 2; // 2 ширина рамки 1 + 1
 // paddle
 let paddleProps = {
     posX: field.offsetWidth / 2 + container.offsetLeft - paddle.offsetWidth / 2,
-    posY: container.offsetTop + container.offsetHeight - paddle.offsetHeight,
+    posY: container.offsetTop + container.offsetHeight - paddle.offsetHeight - 5,
 
     speed: 0,
 
@@ -84,7 +84,7 @@ let paddleProps = {
 // ball
 let ballProps = {
     posX: paddleProps.posX + paddle.offsetWidth / 2 - ball.offsetWidth / 2,
-    posY: paddle.offsetTop - ball.offsetHeight,
+    posY: container.offsetTop + container.offsetHeight - paddle.offsetHeight - 5 - ball.offsetHeight,
 
     speedX: randomDiap(-4, 4),
     speedY: -6,
