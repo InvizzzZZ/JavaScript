@@ -269,9 +269,9 @@ img{
     transform: scale(1.1);
 }
 
-/*@media all and (max-width: 900px) {*/
-/*    #container{*/
-/*        width: 100%;*/
-/*        border: none;*/
-/*    }*/
-/*}*/
+@media all and (max-width: 1920px) and (max-height: 1080px ) {
+    #body{
+        width: 1920px;
+        height: 1080px;
+    }
+}
