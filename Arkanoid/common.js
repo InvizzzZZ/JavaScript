@@ -256,7 +256,7 @@ function begin() {
                 bricks[row * 10 + col].classList.add('removed');
                 scoreProps.score += 100;
                 score.innerText = scoreProps.update();
-                if (scoreProps.score === 200) {
+                if (scoreProps.score === 1000) {
                     clearInterval(interval);
                     roundMusic.pause();
                     winScreen.style.display = 'block';
@@ -311,6 +311,7 @@ function hideStartScreen() {
 function onResize() {
     setTimeout(() => {
         cursorPosX = paddleProps.posX = field.offsetWidth / 2 + container.offsetLeft - paddle.offsetWidth / 2;
+        paddleProps.posY = container.offsetTop + container.offsetHeight - paddle.offsetHeight - 5;
         paddleProps.update();
 
         ballProps.posX = paddleProps.posX + paddle.offsetWidth / 2 - ball.offsetWidth / 2;
