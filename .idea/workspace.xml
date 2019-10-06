@@ -12,8 +12,6 @@
       <change afterPath="$PROJECT_DIR$/React/book/my-app/src/data.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/React/book/promises/common.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/React/book/promises/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Arkanoid/common.js" beforeDir="false" afterPath="$PROJECT_DIR$/Arkanoid/common.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Arkanoid/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/Arkanoid/style.css" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -29,8 +27,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Arkanoid/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="522">
-              <caret line="92" column="17" selection-start-line="92" selection-start-column="17" selection-end-line="92" selection-end-column="17" />
+            <state relative-caret-position="198">
+              <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -296,7 +294,7 @@
       <workItem from="1569737086901" duration="41424000" />
       <workItem from="1570244257498" duration="11499000" />
       <workItem from="1570290755112" duration="11126000" />
-      <workItem from="1570338738573" duration="11487000" />
+      <workItem from="1570338738573" duration="11866000" />
     </task>
     <task id="LOCAL-00001" summary="A2+ &amp; A3+ исправленные">
       <created>1562097959547</created>
@@ -323,7 +321,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="238656000" />
+    <option name="totallyTimeSpent" value="239035000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -692,8 +690,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Arkanoid/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="92" column="17" selection-start-line="92" selection-start-column="17" selection-end-line="92" selection-end-column="17" />
+        <state relative-caret-position="198">
+          <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
         </state>
       </provider>
     </entry>
