@@ -11,6 +11,7 @@ window.addEventListener('resize', onResize, false);
 let interval = 0;
 let control = 0;
 let cursorPosX = 0;
+let touchPosX = 0;
 
 // visual elements
 let container = document.getElementById('container');
@@ -27,10 +28,9 @@ play.addEventListener('click', start, false);
 
 let leftArrow = document.getElementById('leftArrow');
 leftArrow.addEventListener('touchstart', onTouchStart, false);
-leftArrow.addEventListener('touchend', onTouchEnd, false);
+
 let rightArrow = document.getElementById('rightArrow');
 rightArrow.addEventListener('touchstart', onTouchStart, false);
-rightArrow.addEventListener('touchend', onTouchEnd, false);
 
 
 // sound
@@ -367,26 +367,35 @@ function unpressed() {
 }
 
 
-function onTouchStart(EO){
+function onTouchStart(EO) {
     EO = EO || window.event;
     EO.preventDefault();
+    touchPosX = paddleProps.posX;
+
     let elem = EO.target;
-    if(elem.id === 'leftArrow'){
-        paddleProps.speed = -6;
+    if (elem.id === 'leftArrow') {
+        touchPosX = touchPosX - 6;
+        if (touchPosX < field.offsetLeft) {
+            touchPosX = field.offsetLeft;
+        }
     }
-    if(elem.id === 'rightArrow'){
-        paddleProps.speed = 6;
+    if (elem.id === 'rightArrow') {
+        touchPosX = touchPosX + 6;
+        if (touchPosX > field.offsetLeft + field.offsetWidth - paddle.offsetWidth) {
+            touchPosX = field.offsetLeft + field.offsetWidth - paddle.offsetWidth;
+        }
     }
+    paddle.style.left = touchPosX + 'px';
 }
 
-function onTouchEnd(EO){
-    EO = EO || window.event;
-    EO.preventDefault();
-    let elem = EO.target;
-    if(elem.id === 'leftArrow' || elem.id === 'rightArrow' ){
-        paddleProps.speed = 0;
-    }
-}
+// function onTouchEnd(EO){
+//     EO = EO || window.event;
+//     EO.preventDefault();
+//     let elem = EO.target;
+//     if(elem.id === 'leftArrow' || elem.id === 'rightArrow' ){
+//         paddleProps.speed = 0;
+//     }
+// }
 
 function soundOff() {
     let audioElems = document.getElementsByTagName('audio');
