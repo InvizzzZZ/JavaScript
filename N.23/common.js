@@ -27,7 +27,7 @@ let formDef1 =
 
 
 function start() {
-    let buttonStart = document.getElementById('start');
+    let buttonStart = document.getElementById('buttons');
     buttonStart.style.display = 'none';
 
     createForm('main2', formDef1);

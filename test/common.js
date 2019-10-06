@@ -160,9 +160,9 @@ function checkAnswer(EO) {
                 block.appendChild(message);
             }
             container.append(block);
-            let button = document.createElement('button');
+            let button = document.createElement('play');
             button.innerText = 'Попробовать снова';
-            button.classList.add('button');
+            button.classList.add('play');
             container.appendChild(button);
 
             button.addEventListener('click', () => {

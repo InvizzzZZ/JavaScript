@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Arkanoid</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+<div id="play">
+    <img src="img/play.svg" alt="play">
+</div>
+<div id="startScreen" class="screen">
+    <span>
+        ARCANOID <br>
+        <span>Press anu key to begin</span>
+    </span>
+</div>
+
+<div id="endScreen" class="screen">
+    <span>
+        GAME OVER <br>
+        <span id="result">Your score is </span>
+    </span>
+</div>
+
+<div id="winScreen" class="screen">
+    <span>YOU ARE WIN!</span>
+</div>
+
+<div id="container">
+    <div id="topTabs">
+        <div id="lifesNode"></div>
+        <div id="scoreNode"></div>
+        <div id="buttons">
+            <div id="pause_resume">
+                <img id="pause" src="img/pause.svg" alt="pause">
+            </div>
+            <div id="sound">
+                <img id="speaker" src="img/speaker.svg" alt="speaker">
+            </div>
+        </div>
+    </div>
+    <div id="field">
+        <div id="paddle"></div>
+        <div id="ball"></div>
+    </div>
+</div>
+
+<audio id="titleMusic" src="mp3/Title%20Screen.mp3" class="music" preload="metadata" loop muted></audio>
+<audio id="roundMusic" src="mp3/Ending.mp3" class="music" loop></audio>
+<audio id="endMusic" src="mp3/Game%20Over.mp3" class="music"></audio>
+<audio id="winMusic" src="mp3/Win.mp3" class="music" loop></audio>
+<script src="common.js"></script>
+</body>
+</html>

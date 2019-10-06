@@ -3,8 +3,8 @@
 Функция должна учитывать, что некоторые символы надо замеменять на HTML-мнемоники.
 var wrapH1=buildWrapper("H1"); // строим функцию для оборачивания текста в тег H1
 var wrapP=buildWrapper("P");   // строим функцию для оборачивания текста в тег P
-console.log( wrapH1("СТИХИ",{align:"center",title:"M&M's"}) );
-// в консоль выводится строка "<H1 align='center' title='M&amp;M&apos;s'>СТИХИ</H1>"
+console.log( wrapH1("СТИХИ",{align:"center",Title:"M&M's"}) );
+// в консоль выводится строка "<H1 align='center' Title='M&amp;M&apos;s'>СТИХИ</H1>"
 console.log( wrapP("Однажды в <студёную> зимнюю пору") );
 // в консоль выводится строка "<P>Однажды в &lt;студёную&gt; зимнюю пору</P>"
 */

@@ -22,7 +22,7 @@ input[type="text"]{
 }
 
 input[type="date"]::-webkit-clear-button{
-    display: none; /* Hide the button */
+    display: none; /* Hide the play */
     -webkit-appearance: none; /* turn off default browser styling */
 }
 

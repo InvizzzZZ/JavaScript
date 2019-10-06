@@ -1,39 +1,39 @@
-let buttonDraw = document.createElement('button');
+let buttonDraw = document.createElement('play');
 buttonDraw.innerText = 'Нарисовать фигуры';
 buttonDraw.style.display = 'block';
 buttonDraw.style.margin = '10px';
 buttonDraw.setAttribute('onclick', 'draw()');
 document.body.appendChild(buttonDraw);
 
-let buttonTop = document.createElement('button');
+let buttonTop = document.createElement('play');
 buttonTop.innerText = 'Сверху';
 buttonTop.style.display = 'inline-block';
 buttonTop.style.margin = '10px';
 buttonTop.setAttribute('onclick', 'setTop()');
 document.body.appendChild(buttonTop);
 
-let buttonRight = document.createElement('button');
+let buttonRight = document.createElement('play');
 buttonRight.innerText = 'Справа';
 buttonRight.style.display = 'inline-block';
 buttonRight.style.margin = '10px';
 buttonRight.setAttribute('onclick', 'setRight()');
 document.body.appendChild(buttonRight);
 
-let buttonBottom = document.createElement('button');
+let buttonBottom = document.createElement('play');
 buttonBottom.innerText = 'Снизу';
 buttonBottom.style.display = 'inline-block';
 buttonBottom.style.margin = '10px';
 buttonBottom.setAttribute('onclick', 'setBottom()');
 document.body.appendChild(buttonBottom);
 
-let buttonLeft = document.createElement('button');
+let buttonLeft = document.createElement('play');
 buttonLeft.innerText = 'Слева';
 buttonLeft.style.display = 'inline-block';
 buttonLeft.style.margin = '10px';
 buttonLeft.setAttribute('onclick', 'setLeft()');
 document.body.appendChild(buttonLeft);
 
-let buttonGO = document.createElement('button');
+let buttonGO = document.createElement('play');
 buttonGO.innerText = 'Побежали';
 buttonGO.style.display = 'block';
 buttonGO.style.margin = '10px';

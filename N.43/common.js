@@ -43,7 +43,7 @@ scoreTable.classList.add('scoreTable');
 scoreTable.style.width = tableProps.width + 'px';
 document.body.appendChild(scoreTable);
 
-let buttonStart = document.createElement('button');
+let buttonStart = document.createElement('play');
 buttonStart.innerText = 'Старт!';
 buttonStart.addEventListener('click', start, false);
 scoreTable.appendChild(buttonStart);
