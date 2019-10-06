@@ -26,11 +26,11 @@ let play = document.getElementById('play');
 play.addEventListener('click', start, false);
 
 let leftArrow = document.getElementById('leftArrow');
-leftArrow.addEventListener('ontouchstart', onTouchStart, false);
-leftArrow.addEventListener('ontouchend', onTouchEnd, false);
+leftArrow.addEventListener('touchstart', onTouchStart, false);
+leftArrow.addEventListener('touchend', onTouchEnd, false);
 let rightArrow = document.getElementById('rightArrow');
-rightArrow.addEventListener('ontouchstart', onTouchStart, false);
-rightArrow.addEventListener('ontouchend', onTouchEnd, false);
+rightArrow.addEventListener('touchstart', onTouchStart, false);
+rightArrow.addEventListener('touchend', onTouchEnd, false);
 
 
 // sound
@@ -362,8 +362,14 @@ function pressed(EO) {
 
 }
 
+function unpressed() {
+    paddleProps.speed = 0;
+}
+
+
 function onTouchStart(EO){
     EO = EO || window.event;
+    EO.preventDefault();
     let elem = EO.target;
     if(elem.id === 'leftArrow'){
         paddleProps.speed = -6;
@@ -375,6 +381,7 @@ function onTouchStart(EO){
 
 function onTouchEnd(EO){
     EO = EO || window.event;
+    EO.preventDefault();
     let elem = EO.target;
     if(elem.id === 'leftArrow' || elem.id === 'rightArrow' ){
         paddleProps.speed = 0;
@@ -413,10 +420,6 @@ function pauseGame() {
             document.getElementById('pause').setAttribute('src', 'img/pause.svg');
         }
     }
-}
-
-function unpressed() {
-    paddleProps.speed = 0;
 }
 
 function getMousePosition(EO) {
