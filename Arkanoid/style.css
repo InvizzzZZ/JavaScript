@@ -6,8 +6,9 @@
 
 body {
     /*cursor: none !important;*/
+    position: relative;
     text-align: center;
-    height: 100vh;
+    height: 90vh;
     width: 100vw;
 }
 
