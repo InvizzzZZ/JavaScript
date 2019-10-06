@@ -10,7 +10,7 @@ body {
     position: relative;
     text-align: center;
     height: 100vh;
-    width: 100vw;
+    width: auto;
     min-width: 375px;
     min-height: 375px;
     /*grid-template-columns: 1fr;*/
@@ -213,6 +213,22 @@ img{
     height: auto;
 }
 
+#leftArrow, #rightArrow{
+    z-index: 2;
+    position: absolute;
+    opacity: 0.5;
+    border: 2px dotted black;
+    border-radius: 50%;
+    background-color: #cbc042;
+}
+
+#leftArrow > img, #rightArrow > img{
+    width: 5vw;
+    max-width: 5vw;
+    min-width: 50px;
+    height: auto;
+}
+
 #play{
     z-index: 2;
     position: absolute;
@@ -227,7 +243,7 @@ img{
 }
 
 
-#play:hover, #sound:hover, #pause_resume:hover {
+#play:hover, #sound:hover, #pause_resume:hover, #leftArrow:hover, #rightArrow:hover {
 
     transform: scale(1.1);
 }

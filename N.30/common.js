@@ -55,7 +55,7 @@ function getCoords(elem) {
     // var box = elem.getBoundingClientRect();
     // return {
     //     top: box.top + pageYOffset,
-    //     left: box.left + pageXOffset
+    //     leftArrow: box.leftArrow + pageXOffset
     // };
 
     var bbox=elem.getBoundingClientRect();

@@ -74,7 +74,7 @@ function checkKey(e) {
             elem.style.backgroundColor = 'red';
         }
     } else if (e.keyCode == '37') {
-        // left arrow
+        // leftArrow arrow
         elem.style.transform = 'rotate(270deg)';
         y = +y - 1;
         if ((y >= 1 && y <= 7)&& !document.querySelector('[data-posX = "' + x + '"]'+'[data-posY = "' + y + '"]').classList.contains('wall')) {
@@ -85,7 +85,7 @@ function checkKey(e) {
             elem.style.backgroundColor = 'red';
         }
     } else if (e.keyCode == '39') {
-        // right arrow
+        // rightArrow arrow
         elem.style.transform = 'rotate(90deg)';
         y = +y + 1;
         if ((y >= 1 && y <= 7)&& !document.querySelector('[data-posX = "' + x + '"]'+'[data-posY = "' + y + '"]').classList.contains('wall')) {

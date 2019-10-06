@@ -25,6 +25,14 @@ let ball = document.getElementById('ball');
 let play = document.getElementById('play');
 play.addEventListener('click', start, false);
 
+let leftArrow = document.getElementById('leftArrow');
+leftArrow.addEventListener('ontouchstart', onTouchStart, false);
+leftArrow.addEventListener('ontouchend', onTouchEnd, false);
+let rightArrow = document.getElementById('rightArrow');
+rightArrow.addEventListener('ontouchstart', onTouchStart, false);
+rightArrow.addEventListener('ontouchend', onTouchEnd, false);
+
+
 // sound
 let sound = document.getElementById('sound');
 sound.addEventListener('click', soundOff, false);
@@ -49,6 +57,13 @@ let winMusic = document.getElementById('winMusic');
 window.onload = () => {
     play.style.top = container.offsetHeight / 2 - play.offsetHeight / 2 + 'px';
     play.style.left = container.offsetWidth / 2 + container.offsetLeft - play.offsetWidth / 2 + 'px';
+
+    leftArrow.style.top = container.offsetHeight - container.offsetHeight / 4 + 'px';
+    leftArrow.style.left = 40 + 'px';
+
+    rightArrow.style.top = container.offsetHeight - container.offsetHeight / 4 + 'px';
+    rightArrow.style.right = 40 + 'px';
+
     titleMusic.muted = false;
     titleMusic.play()
 };
@@ -322,7 +337,13 @@ function onResize() {
         brickWidth = brick.offsetWidth + 2;
 
         play.style.top = container.offsetHeight / 2 - play.offsetHeight / 2 + 'px';
-        play.style.left = container.offsetWidth / 2 + container.offsetLeft - play.offsetWidth / 2 + 'px';
+        play.style.left = field.offsetWidth / 2 + container.offsetLeft - play.offsetWidth / 2 + 'px';
+
+        leftArrow.style.top = container.offsetHeight - container.offsetHeight / 4 + 'px';
+        leftArrow.style.left = 40 + 'px';
+
+        rightArrow.style.top = container.offsetHeight - container.offsetHeight / 4 + 'px';
+        rightArrow.style.right = 40 + 'px';
     }, 200);
 }
 
@@ -339,6 +360,25 @@ function pressed(EO) {
         paddleProps.speed = 6;
     }
 
+}
+
+function onTouchStart(EO){
+    EO = EO || window.event;
+    let elem = EO.target;
+    if(elem.id === 'leftArrow'){
+        paddleProps.speed = -6;
+    }
+    if(elem.id === 'rightArrow'){
+        paddleProps.speed = 6;
+    }
+}
+
+function onTouchEnd(EO){
+    EO = EO || window.event;
+    let elem = EO.target;
+    if(elem.id === 'leftArrow' || elem.id === 'rightArrow' ){
+        paddleProps.speed = 0;
+    }
 }
 
 function soundOff() {
