@@ -256,7 +256,7 @@ function begin() {
                 bricks[row * 10 + col].classList.add('removed');
                 scoreProps.score += 100;
                 score.innerText = scoreProps.update();
-                if (scoreProps.score === 1000) {
+                if (scoreProps.score === 200) {
                     clearInterval(interval);
                     roundMusic.pause();
                     winScreen.style.display = 'block';
