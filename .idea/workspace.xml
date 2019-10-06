@@ -12,7 +12,6 @@
       <change afterPath="$PROJECT_DIR$/React/book/my-app/src/data.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/React/book/promises/common.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/React/book/promises/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Arkanoid/common.js" beforeDir="false" afterPath="$PROJECT_DIR$/Arkanoid/common.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Arkanoid/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/Arkanoid/style.css" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -29,8 +28,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Arkanoid/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="558">
-              <caret line="31" column="2" selection-start-line="31" selection-start-column="2" selection-end-line="31" selection-end-column="2" />
+            <state relative-caret-position="414">
+              <caret line="71" column="19" lean-forward="true" selection-start-line="71" selection-start-column="19" selection-end-line="71" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -47,7 +46,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Arkanoid/common.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1278">
+            <state relative-caret-position="1548">
               <caret line="86" column="80" selection-start-line="86" selection-start-column="80" selection-end-line="86" selection-end-column="80" />
             </state>
           </provider>
@@ -296,7 +295,7 @@
       <workItem from="1569737086901" duration="41424000" />
       <workItem from="1570244257498" duration="11499000" />
       <workItem from="1570290755112" duration="11126000" />
-      <workItem from="1570338738573" duration="10169000" />
+      <workItem from="1570338738573" duration="10902000" />
     </task>
     <task id="LOCAL-00001" summary="A2+ &amp; A3+ исправленные">
       <created>1562097959547</created>
@@ -323,7 +322,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="237338000" />
+    <option name="totallyTimeSpent" value="238071000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -685,15 +684,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Arkanoid/common.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1278">
+        <state relative-caret-position="1548">
           <caret line="86" column="80" selection-start-line="86" selection-start-column="80" selection-end-line="86" selection-end-column="80" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Arkanoid/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="558">
-          <caret line="31" column="2" selection-start-line="31" selection-start-column="2" selection-end-line="31" selection-end-column="2" />
+        <state relative-caret-position="414">
+          <caret line="71" column="19" lean-forward="true" selection-start-line="71" selection-start-column="19" selection-end-line="71" selection-end-column="19" />
         </state>
       </provider>
     </entry>
