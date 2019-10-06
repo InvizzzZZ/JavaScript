@@ -55,6 +55,7 @@ let winMusic = document.getElementById('winMusic');
 
 
 window.onload = () => {
+    alert('new');
     play.style.top = container.offsetHeight / 2 - play.offsetHeight / 2 + 'px';
     play.style.left = container.offsetWidth / 2 + container.offsetLeft - play.offsetWidth / 2 + 'px';
 
