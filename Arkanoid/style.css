@@ -29,13 +29,11 @@ body {
    background: linear-gradient(180deg, rgba(253,29,29,1) 0%, rgba(58,95,180,1) 50%, rgba(252,176,69,1) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-size: 10vh;
-    max-font-size: 30px;
+    font-size: 100px;
 }
 
 #startScreen > span > span{
     font-size: 4vh;
-    max-font-size: 25px;
     background: #ffffff;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -46,13 +44,11 @@ body {
 }
 #endScreen > span{
     font-size: 4vh;
-    max-font-size: 25px;
     color: #ffffff;
 }
 
 #endScreen > span > span{
     font-size: 4vh;
-    max-font-size: 25px;
     background: #ffffff;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -62,8 +58,7 @@ body {
     background: linear-gradient(180deg, rgba(253,29,29,1) 0%, rgba(58,95,180,1) 50%, rgba(252,176,69,1) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-size: 5vh;
-    max-font-size: 30px;
+    font-size: 125px;
 }
 
 #container {
@@ -269,9 +264,22 @@ img{
     transform: scale(1.1);
 }
 
-@media all and (max-width: 1920px) and (max-height: 1080px ) {
-    #body{
-        width: 1920px;
-        height: 1080px;
+/*@media all and (max-width: 1920px) and (max-height: 1080px ) {*/
+/*    #body{*/
+/*        width: 1920px;*/
+/*        height: 1080px;*/
+/*    }*/
+/*    #startScreen > span > span{*/
+/*        font-size: 25px;*/
+/*    }*/
+/*}*/
+
+@media all and (max-width:  1536px) and (max-height: 2048px ) {
+    /*#container{*/
+    /*    width: 1080px;*/
+    /*    height: 1920px;*/
+    /*}*/
+    #startScreen > span > span{
+        font-size: 50px;
     }
 }
