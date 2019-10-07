@@ -393,6 +393,7 @@ function unpressed() {
 // }
 
 function touchStart(EO) {
+    alert('touchstart');
     EO = EO || window.event;
     EO.preventDefault();
     touchobj = e.changedTouches[0]; // первая точка прикосновения
@@ -400,10 +401,11 @@ function touchStart(EO) {
 }
 
 function touchMove(EO) {
+    alert('touchmove');
     EO.preventDefault();
     var dist = parseInt(touchobj.clientX) - touchPosX;
     paddleProps.posX += dist;
-    paddle.style.paddingLeft = paddleProps.posX + 'px';
+    // paddle.style.paddingLeft = paddleProps.posX + 'px';
 }
 
 
