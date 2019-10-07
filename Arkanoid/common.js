@@ -13,6 +13,7 @@ let control = 0;
 let cursorPosX = 0;
 let touchPosX = 0;
 let touchobj = 0; // первая точка прикосновения
+let dist = 0;
 
 // visual elements
 let container = document.getElementById('container');
@@ -166,8 +167,7 @@ function start() {
         document.addEventListener('keydown', pressed, false);
         document.addEventListener('keyup', unpressed, false);
         paddle.addEventListener('touchstart', touchStart, false);
-        paddle.addEventListener('touchmove', touchMove, false);
-        // document.addEventListener('mousemove', getMousePosition, false);
+        document.addEventListener('mousemove', getMousePosition, false);
     }
 }
 
@@ -393,19 +393,33 @@ function unpressed() {
 // }
 
 function touchStart(EO) {
-    alert('touchstart');
+    // alert('touchstart');
     EO = EO || window.event;
     EO.preventDefault();
-    touchobj = e.changedTouches[0]; // первая точка прикосновения
+    touchobj = EO.changedTouches[0]; // первая точка прикосновения
     touchPosX = parseInt(touchobj.clientX); // положение точки касания по x, относительно левого края браузера
+    console.log(touchPosX + " touchPosX");
+
+    paddle.addEventListener('touchmove', touchMove, false);
+    paddle.addEventListener('touchend', touchEnd, false);
 }
 
 function touchMove(EO) {
-    alert('touchmove');
+    // alert('touchmove');
+    EO = EO || window.event;
     EO.preventDefault();
-    var dist = parseInt(touchobj.clientX) - touchPosX;
-    paddleProps.posX += dist;
-    // paddle.style.paddingLeft = paddleProps.posX + 'px';
+    touchobj = EO.changedTouches[0];
+    dist = parseInt(touchobj.clientX) - touchPosX;
+    console.log(dist + ' dist');
+    // paddleProps.posX += dist;
+    // paddle.style.left = paddle.style.left + dist + 'px';
+}
+
+function touchEnd(EO) {
+    EO = EO || window.event;
+    EO.preventDefault();
+    paddleProps.posX = paddleProps.posX + dist;
+    paddle.style.left = paddle.style.left + dist + 'px';
 }
 
 
@@ -452,18 +466,18 @@ function pauseGame() {
     }
 }
 
-function getMousePosition(EO) {
-    cursorPosX = paddleProps.posX;
-    if (EO.pageX > field.offsetLeft + field.offsetWidth - paddle.offsetWidth) {
-        paddleProps.posX = cursorPosX = field.offsetLeft + field.offsetWidth - paddle.offsetWidth;
-    } else if (EO.pageX <= field.offsetLeft) {
-        paddleProps.posX = cursorPosX = field.offsetLeft;
-    } else {
-        paddleProps.posX = cursorPosX = EO.pageX;
-    }
-
-    paddle.style.left = cursorPosX + 'px';
-}
+// function getMousePosition(EO) {
+//     cursorPosX = paddleProps.posX;
+//     if (EO.pageX > field.offsetLeft + field.offsetWidth - paddle.offsetWidth) {
+//         paddleProps.posX = cursorPosX = field.offsetLeft + field.offsetWidth - paddle.offsetWidth;
+//     } else if (EO.pageX <= field.offsetLeft) {
+//         paddleProps.posX = cursorPosX = field.offsetLeft;
+//     } else {
+//         paddleProps.posX = cursorPosX = EO.pageX;
+//     }
+//
+//     paddle.style.left = cursorPosX + 'px';
+// }
 
 function randomDiap(n, m) {
     return Math.floor(Math.random() * (m - n + 1)) + n;
