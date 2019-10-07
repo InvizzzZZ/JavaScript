@@ -8,17 +8,17 @@ var cancelAnimationFrame = window.cancelAnimationFrame || window.mozCancelAnimat
 window.addEventListener('resize', onResize, false);
 
 // setInterval
-let interval = 0;
-let control = 0;
-let cursorPosX = 0;
-let touchPosX = 0;
-let touchobj = 0; // первая точка прикосновения
-let dist = 0;
+let interval = 0; // id interval
+let control = 0; // признак в полете шарик или нет ( 1 - полет, 0 - нет)
+// let cursorPosX = 0;
+let touchPosX = 0; // координата Х касания пальца или мыши по paddle
+let touchobj = 0; // первая точка прикосновения к paddle
+let dist = 0; // расстояние на которое сместился палец или мышь после тапа по paddle
 
 // visual elements
 let container = document.getElementById('container');
 let field = document.getElementById('field');
-let score_lifes = document.getElementById('topTabs');
+let topTabs = document.getElementById('topTabs');
 let score = document.getElementById('scoreNode');
 let lifes = document.getElementById('lifesNode');
 let paddle = document.getElementById('paddle');
@@ -28,12 +28,12 @@ let ball = document.getElementById('ball');
 let play = document.getElementById('play');
 play.addEventListener('click', start, false);
 
-let leftArrow = document.getElementById('leftArrow');
-// leftArrow.addEventListener('click', moveLeftRight, false);
-
-let rightArrow = document.getElementById('rightArrow');
-// rightArrow.addEventListener('click', moveLeftRight, false);
-
+// let leftArrow = document.getElementById('leftArrow');
+// // leftArrow.addEventListener('click', moveLeftRight, false);
+//
+// let rightArrow = document.getElementById('rightArrow');
+// // rightArrow.addEventListener('click', moveLeftRight, false);
+//
 
 // sound
 let sound = document.getElementById('sound');
@@ -57,14 +57,14 @@ let winMusic = document.getElementById('winMusic');
 
 
 window.onload = () => {
-    play.style.top = container.offsetHeight / 2 - play.offsetHeight / 2 + 'px';
-    play.style.left = container.offsetWidth / 2 + container.offsetLeft - play.offsetWidth / 2 + 'px';
+    play.style.top = container.offsetTop + container.offsetHeight / 2 - play.offsetHeight / 2 + 'px';
+    play.style.left = container.offsetLeft + container.offsetWidth / 2 + container.offsetLeft - play.offsetWidth / 2 + 'px';
 
-    leftArrow.style.top = container.offsetHeight - container.offsetHeight / 4 + 'px';
-    leftArrow.style.left = 40 + 'px';
+    // leftArrow.style.top = container.offsetHeight - container.offsetHeight / 4 + 'px';
+    // leftArrow.style.left = 40 + 'px';
 
-    rightArrow.style.top = container.offsetHeight - container.offsetHeight / 4 + 'px';
-    rightArrow.style.right = document.getElementById('right').offsetWidth + 40 + 'px';
+    // rightArrow.style.top = container.offsetHeight - container.offsetHeight / 4 + 'px';
+    // rightArrow.style.right = document.getElementById('right').offsetWidth + 40 + 'px';
 
     titleMusic.muted = false;
     titleMusic.play()
@@ -144,7 +144,8 @@ function start() {
     if (!interval) {
         roundMusic.play();
         if (control === 0) {
-            cursorPosX = paddleProps.posX = field.offsetWidth / 2 + container.offsetLeft - paddle.offsetWidth / 2;
+            /*cursorPosX =*/
+            paddleProps.posX = field.offsetWidth / 2 + container.offsetLeft - paddle.offsetWidth / 2;
             paddleProps.update();
 
             ballProps.posX = paddleProps.posX + paddle.offsetWidth / 2 - ball.offsetWidth / 2;
@@ -167,7 +168,7 @@ function start() {
         document.addEventListener('keydown', pressed, false);
         document.addEventListener('keyup', unpressed, false);
         paddle.addEventListener('touchstart', touchStart, false);
-        document.addEventListener('mousemove', getMousePosition, false);
+        // document.addEventListener('mousemove', getMousePosition, false);
     }
 }
 
@@ -229,8 +230,8 @@ function begin() {
     ballProps.posY += ballProps.speedY;
 
     // вылетел ли мяч ниже пола?
-    if (ballProps.posY + ball.offsetHeight > container.offsetHeight) {
-        ballProps.posY = container.offsetHeight - ball.offsetHeight;
+    if (ballProps.posY + ball.offsetHeight > container.offsetHeight + container.offsetTop) {
+        ballProps.posY = container.offsetHeight + container.offsetTop - ball.offsetHeight;
         // cancelAnimationFrame(interval);
         clearInterval(interval);
         interval = 0;
@@ -259,7 +260,7 @@ function begin() {
     //столкнулся с кирпичем
     if (ballProps.posY + (ball.offsetHeight / 2) >= brick.offsetLeft) {
         if (ballProps.posY + (ball.offsetHeight / 2) <= brickLast.offsetTop + brickLast.offsetHeight) {
-            let row = Math.floor((ballProps.posY - score_lifes.offsetHeight + (ball.offsetHeight / 2)) / brickHeight);
+            let row = Math.floor((ballProps.posY - topTabs.offsetHeight - container.offsetTop + (ball.offsetHeight / 2)) / brickHeight);
             let col = Math.floor((ballProps.posX - container.offsetLeft + (ball.offsetHeight / 2)) / brickWidth);
 
             // console.log('ballProps.posY = ' + ballProps.posY + (ball.offsetHeight / 2), 'ballProps.posX = ' + ballProps.posX + (ball.offsetHeight / 2));
@@ -299,16 +300,19 @@ function begin() {
     ballProps.update();
 
     //paddle
-    cursorPosX = paddleProps.posX += paddleProps.speed;
+    /* cursorPosX =*/
+    paddleProps.posX += paddleProps.speed;
 
     //левая стена
     if (paddleProps.posX < container.offsetLeft) {
-        cursorPosX = paddleProps.posX = container.offsetLeft;
+        /* cursorPosX =*/
+        paddleProps.posX = container.offsetLeft;
     }
 
     //правая стена
     if (paddleProps.posX + paddle.offsetWidth > field.offsetWidth + container.offsetLeft) {
-        cursorPosX = paddleProps.posX = field.offsetWidth + container.offsetLeft - paddle.offsetWidth;
+        /*  cursorPosX =*/
+        paddleProps.posX = field.offsetWidth + container.offsetLeft - paddle.offsetWidth;
     }
 
     paddleProps.update();
@@ -326,7 +330,8 @@ function hideStartScreen() {
 
 function onResize() {
     setTimeout(() => {
-        cursorPosX = paddleProps.posX = field.offsetWidth / 2 + container.offsetLeft - paddle.offsetWidth / 2;
+        /* cursorPosX =*/
+        paddleProps.posX = field.offsetWidth / 2 + container.offsetLeft - paddle.offsetWidth / 2;
         paddleProps.posY = container.offsetTop + container.offsetHeight - paddle.offsetHeight - 5;
         paddleProps.update();
 
@@ -340,11 +345,11 @@ function onResize() {
         play.style.top = container.offsetHeight / 2 - play.offsetHeight / 2 + 'px';
         play.style.left = field.offsetWidth / 2 + container.offsetLeft - play.offsetWidth / 2 + 'px';
 
-        leftArrow.style.top = container.offsetHeight - container.offsetHeight / 4 + 'px';
-        leftArrow.style.left = 40 + 'px';
-
-        rightArrow.style.top = container.offsetHeight - container.offsetHeight / 4 + 'px';
-        rightArrow.style.right = document.getElementById('right').offsetWidth + 40 + 'px';
+        // leftArrow.style.top = container.offsetHeight - container.offsetHeight / 4 + 'px';
+        // leftArrow.style.left = 40 + 'px';
+        //
+        // rightArrow.style.top = container.offsetHeight - container.offsetHeight / 4 + 'px';
+        // rightArrow.style.right = document.getElementById('right').offsetWidth + 40 + 'px';
     }, 200);
 }
 
@@ -354,48 +359,27 @@ function pressed(EO) {
     let code = EO.keyCode;
 
     if (code === 37) {
+        paddle.style.background = 'linear-gradient(to bottom, #d2d128 0%, #d22b2a 100%)';
         paddleProps.speed = -6;
     }
 
     if (code === 39) {
         paddleProps.speed = 6;
+        paddle.style.background = 'linear-gradient(to bottom, #d2d128 0%, #d22b2a 100%)';
     }
 
 }
 
 function unpressed() {
     paddleProps.speed = 0;
+    paddle.style.background = 'linear-gradient(to bottom, #cdd 0%, #777 100%)';
 }
-
-
-// function moveLeftRight(EO) {
-//     EO = EO || window.event;
-//     EO.preventDefault();
-//     touchPosX = paddleProps.posX;
-//
-//     let elem = EO.target;
-//     console.log(elem, elem.id);
-//     if (elem.id === 'left') {
-//         console.error('left');
-//         paddleProps.posX = touchPosX = touchPosX - 30;
-//         if (touchPosX < field.offsetLeft) {
-//             paddleProps.posX = touchPosX = field.offsetLeft;
-//         }
-//     }
-//     if (elem.id === 'right') {
-//         console.error('right');
-//         paddleProps.posX = touchPosX = touchPosX + 30;
-//         if (touchPosX > field.offsetLeft + field.offsetWidth - paddle.offsetWidth) {
-//             paddleProps.posX = touchPosX = field.offsetLeft + field.offsetWidth - paddle.offsetWidth;
-//         }
-//     }
-//     paddle.style.left = touchPosX + 'px';
-// }
 
 function touchStart(EO) {
     // alert('touchstart');
     EO = EO || window.event;
     EO.preventDefault();
+    paddle.style.background = 'linear-gradient(to bottom, #d2d128 0%, #d22b2a 100%)';
     touchobj = EO.changedTouches[0]; // первая точка прикосновения
     touchPosX = parseInt(touchobj.clientX); // положение точки касания по x, относительно левого края браузера
     console.log(touchPosX + " touchPosX");
@@ -408,32 +392,19 @@ function touchMove(EO) {
     // alert('touchmove');
     EO = EO || window.event;
     EO.preventDefault();
-        touchobj = EO.changedTouches[0];
-        let fingerPosX = parseInt(touchobj.clientX);
-        dist = fingerPosX - touchPosX;
-        touchPosX = fingerPosX;
-        console.log(dist + ' dist');
-        paddleProps.posX += dist;
-        dist = 0;
-        paddle.style.left = paddleProps.posX + 'px';
+    touchobj = EO.changedTouches[0];
+    let fingerPosX = parseInt(touchobj.clientX);
+    dist = fingerPosX - touchPosX;
+    touchPosX = fingerPosX;
+    // console.log(dist + ' dist');
+    paddleProps.posX += dist;
+    dist = 0;
+    paddle.style.left = paddleProps.posX + 'px';
 }
 
-// function touchEnd(EO) {
-//     EO = EO || window.event;
-//     EO.preventDefault();
-//     paddleProps.posX = paddleProps.posX + dist;
-//     paddle.style.left = paddle.style.left + dist + 'px';
-// }
-
-
-// function onTouchEnd(EO){
-//     EO = EO || window.event;
-//     EO.preventDefault();
-//     let elem = EO.target;
-//     if(elem.id === 'leftArrow' || elem.id === 'rightArrow' ){
-//         paddleProps.speed = 0;
-//     }
-// }
+function touchEnd() {
+    paddle.style.background = 'linear-gradient(to bottom, #cdd 0%, #777 100%)';
+}
 
 function soundOff() {
     let audioElems = document.getElementsByTagName('audio');
