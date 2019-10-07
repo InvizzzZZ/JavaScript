@@ -12,6 +12,7 @@ let interval = 0;
 let control = 0;
 let cursorPosX = 0;
 let touchPosX = 0;
+let touchobj = 0; // первая точка прикосновения
 
 // visual elements
 let container = document.getElementById('container');
@@ -27,10 +28,10 @@ let play = document.getElementById('play');
 play.addEventListener('click', start, false);
 
 let leftArrow = document.getElementById('leftArrow');
-leftArrow.addEventListener('touchstart', onTouchStart, false);
+// leftArrow.addEventListener('click', moveLeftRight, false);
 
 let rightArrow = document.getElementById('rightArrow');
-rightArrow.addEventListener('touchstart', onTouchStart, false);
+// rightArrow.addEventListener('click', moveLeftRight, false);
 
 
 // sound
@@ -55,7 +56,6 @@ let winMusic = document.getElementById('winMusic');
 
 
 window.onload = () => {
-    alert('new');
     play.style.top = container.offsetHeight / 2 - play.offsetHeight / 2 + 'px';
     play.style.left = container.offsetWidth / 2 + container.offsetLeft - play.offsetWidth / 2 + 'px';
 
@@ -92,8 +92,6 @@ let paddleProps = {
     update: function () {
         paddle.style.left = this.posX + "px";
         paddle.style.top = this.posY + "px";
-        console.error(container.offsetHeight + '   fsdfsd');
-        console.error(container.offsetWidth + '   fsdfsd');
     }
 };
 
@@ -167,7 +165,9 @@ function start() {
         document.removeEventListener('keydown', hideStartScreen, false);
         document.addEventListener('keydown', pressed, false);
         document.addEventListener('keyup', unpressed, false);
-        document.addEventListener('mousemove', getMousePosition, false);
+        paddle.addEventListener('touchstart', touchStart, false);
+        paddle.addEventListener('touchmove', touchMove, false);
+        // document.addEventListener('mousemove', getMousePosition, false);
     }
 }
 
@@ -188,9 +188,9 @@ function begin() {
         ballProps.posY + ball.offsetHeight > paddle.offsetTop) {
 
         ballProps.speedY = -ballProps.speedY;
-        console.log('<0.25 ' + ballProps.speedX);
+        // console.log('<0.25 ' + ballProps.speedX);
         ballProps.speedX > 0 ? ballProps.speedX = ballProps.speedX + 2 : ballProps.speedX = ballProps.speedX = ballProps.speedX - 2;
-        console.log('<0.25 ' + ballProps.speedX);
+        // console.log('<0.25 ' + ballProps.speedX);
     }
 
     if (ballProps.posX + (ball.offsetHeight / 2) > paddle.offsetLeft + paddle.offsetWidth * 0.75 &&
@@ -198,9 +198,9 @@ function begin() {
         ballProps.posY + ball.offsetHeight > paddle.offsetTop) {
 
         ballProps.speedY = -ballProps.speedY;
-        console.log('>0.75 ' + ballProps.speedX);
+        // console.log('>0.75 ' + ballProps.speedX);
         ballProps.speedX > 0 ? ballProps.speedX = ballProps.speedX + 2 : ballProps.speedX = ballProps.speedX = ballProps.speedX - 2;
-        console.log('<0.75 ' + ballProps.speedX);
+        // console.log('<0.75 ' + ballProps.speedX);
     }
 
     if (ballProps.posX + (ball.offsetHeight / 2) > paddle.offsetLeft + paddle.offsetWidth * 0.25 &&
@@ -208,11 +208,11 @@ function begin() {
         ballProps.posY + ball.offsetHeight > paddle.offsetTop) {
 
         ballProps.speedY = -ballProps.speedY;
-        console.log('>0.25 & <0.75 ' + ballProps.speedX);
+        // console.log('>0.25 & <0.75 ' + ballProps.speedX);
         if (ballProps.speedX !== 2 && ballProps.speedX !== -2) {
             ballProps.speedX > 0 ? ballProps.speedX = ballProps.speedX - 2 : ballProps.speedX = ballProps.speedX = ballProps.speedX + 2;
         }
-        console.log('>0.25 & <0.75 ' + ballProps.speedX);
+        // console.log('>0.25 & <0.75 ' + ballProps.speedX);
     }
     // end
 
@@ -262,10 +262,10 @@ function begin() {
             let row = Math.floor((ballProps.posY - score_lifes.offsetHeight + (ball.offsetHeight / 2)) / brickHeight);
             let col = Math.floor((ballProps.posX - container.offsetLeft + (ball.offsetHeight / 2)) / brickWidth);
 
-            console.log('ballProps.posY = ' + ballProps.posY + (ball.offsetHeight / 2), 'ballProps.posX = ' + ballProps.posX + (ball.offsetHeight / 2));
-            console.log('row = ' + row, 'col = ' + col);
-            console.log('brickHeight = ' + brickHeight, 'brickWidth = ' + brickWidth);
-            console.log(bricks[row * 10 + col].className);
+            // console.log('ballProps.posY = ' + ballProps.posY + (ball.offsetHeight / 2), 'ballProps.posX = ' + ballProps.posX + (ball.offsetHeight / 2));
+            // console.log('row = ' + row, 'col = ' + col);
+            // console.log('brickHeight = ' + brickHeight, 'brickWidth = ' + brickWidth);
+            // console.log(bricks[row * 10 + col].className);
 
             if (!bricks[row * 10 + col].classList.contains('removed')) {
                 bricks[row * 10 + col].style.transform = 'scale(1, -1)';
@@ -368,27 +368,44 @@ function unpressed() {
 }
 
 
-function onTouchStart(EO) {
-    alert('touch!');
+// function moveLeftRight(EO) {
+//     EO = EO || window.event;
+//     EO.preventDefault();
+//     touchPosX = paddleProps.posX;
+//
+//     let elem = EO.target;
+//     console.log(elem, elem.id);
+//     if (elem.id === 'left') {
+//         console.error('left');
+//         paddleProps.posX = touchPosX = touchPosX - 30;
+//         if (touchPosX < field.offsetLeft) {
+//             paddleProps.posX = touchPosX = field.offsetLeft;
+//         }
+//     }
+//     if (elem.id === 'right') {
+//         console.error('right');
+//         paddleProps.posX = touchPosX = touchPosX + 30;
+//         if (touchPosX > field.offsetLeft + field.offsetWidth - paddle.offsetWidth) {
+//             paddleProps.posX = touchPosX = field.offsetLeft + field.offsetWidth - paddle.offsetWidth;
+//         }
+//     }
+//     paddle.style.left = touchPosX + 'px';
+// }
+
+function touchStart(EO) {
     EO = EO || window.event;
     EO.preventDefault();
-    touchPosX = paddleProps.posX;
-
-    let elem = EO.target;
-    if (elem.id === 'leftArrow') {
-        touchPosX = touchPosX - 6;
-        if (touchPosX < field.offsetLeft) {
-            touchPosX = field.offsetLeft;
-        }
-    }
-    if (elem.id === 'rightArrow') {
-        touchPosX = touchPosX + 6;
-        if (touchPosX > field.offsetLeft + field.offsetWidth - paddle.offsetWidth) {
-            touchPosX = field.offsetLeft + field.offsetWidth - paddle.offsetWidth;
-        }
-    }
-    paddle.style.left = touchPosX + 'px';
+    touchobj = e.changedTouches[0]; // первая точка прикосновения
+    touchPosX = parseInt(touchobj.clientX); // положение точки касания по x, относительно левого края браузера
 }
+
+function touchMove(EO) {
+    EO.preventDefault();
+    var dist = parseInt(touchobj.clientX) - touchPosX;
+    paddleProps.posX += dist;
+    paddle.style.paddingLeft = paddleProps.posX + 'px';
+}
+
 
 // function onTouchEnd(EO){
 //     EO = EO || window.event;
