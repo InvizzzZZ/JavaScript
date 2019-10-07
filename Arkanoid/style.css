@@ -139,18 +139,18 @@ body {
 }
 
 #paddle {
-    width: 13%;
-    min-width: 100px;
-    height: 2%;
+    width: 20%;
+    min-width: 150px;
+    height: 3vh;
     border: 1px solid #777;
     background: linear-gradient(to bottom, #cdd 0%, #777 100%);
     position: absolute;
-    border-radius: 7px;
+    border-radius: 40px;
 }
 
 #ball {
-    width: 25px;
-    height: 25px;
+    width: 45px;
+    height: 45px;
     border: 1px solid #955;
     background: linear-gradient(to bottom, #fdd 0%, #500 100%);
     border-radius: 50%;

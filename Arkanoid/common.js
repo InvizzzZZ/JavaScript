@@ -408,19 +408,22 @@ function touchMove(EO) {
     // alert('touchmove');
     EO = EO || window.event;
     EO.preventDefault();
-    touchobj = EO.changedTouches[0];
-    dist = parseInt(touchobj.clientX) - touchPosX;
-    console.log(dist + ' dist');
-    // paddleProps.posX += dist;
-    // paddle.style.left = paddle.style.left + dist + 'px';
+        touchobj = EO.changedTouches[0];
+        let fingerPosX = parseInt(touchobj.clientX);
+        dist = fingerPosX - touchPosX;
+        touchPosX = fingerPosX;
+        console.log(dist + ' dist');
+        paddleProps.posX += dist;
+        dist = 0;
+        paddle.style.left = paddleProps.posX + 'px';
 }
 
-function touchEnd(EO) {
-    EO = EO || window.event;
-    EO.preventDefault();
-    paddleProps.posX = paddleProps.posX + dist;
-    paddle.style.left = paddle.style.left + dist + 'px';
-}
+// function touchEnd(EO) {
+//     EO = EO || window.event;
+//     EO.preventDefault();
+//     paddleProps.posX = paddleProps.posX + dist;
+//     paddle.style.left = paddle.style.left + dist + 'px';
+// }
 
 
 // function onTouchEnd(EO){
