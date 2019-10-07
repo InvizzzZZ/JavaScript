@@ -13,7 +13,6 @@
       <change afterPath="$PROJECT_DIR$/React/book/promises/common.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/React/book/promises/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Arkanoid/common.js" beforeDir="false" afterPath="$PROJECT_DIR$/Arkanoid/common.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Arkanoid/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Arkanoid/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Arkanoid/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/Arkanoid/style.css" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -27,11 +26,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Arkanoid/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+            <state relative-caret-position="468">
+              <caret line="26" column="24" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -45,11 +44,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Arkanoid/common.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="262" column="75" lean-forward="true" selection-start-line="262" selection-start-column="75" selection-end-line="262" selection-end-column="75" />
+            <state relative-caret-position="956">
+              <caret line="345" column="104" lean-forward="true" selection-start-line="344" selection-start-column="11" selection-end-line="345" selection-end-column="104" />
             </state>
           </provider>
         </entry>
@@ -164,8 +163,8 @@
         <option value="$PROJECT_DIR$/tmp/common.js" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/Arkanoid/index.html" />
-        <option value="$PROJECT_DIR$/Arkanoid/style.css" />
         <option value="$PROJECT_DIR$/Arkanoid/common.js" />
+        <option value="$PROJECT_DIR$/Arkanoid/style.css" />
       </list>
     </option>
   </component>
@@ -297,7 +296,7 @@
       <workItem from="1570290755112" duration="11126000" />
       <workItem from="1570338738573" duration="21299000" />
       <workItem from="1570374722502" duration="1467000" />
-      <workItem from="1570447361459" duration="5803000" />
+      <workItem from="1570447361459" duration="7585000" />
     </task>
     <task id="LOCAL-00001" summary="A2+ &amp; A3+ исправленные">
       <created>1562097959547</created>
@@ -324,7 +323,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="255738000" />
+    <option name="totallyTimeSpent" value="257520000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -675,17 +674,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Arkanoid/style.css">
+    <entry file="file://$PROJECT_DIR$/Arkanoid/common.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+        <state relative-caret-position="956">
+          <caret line="345" column="104" lean-forward="true" selection-start-line="344" selection-start-column="11" selection-end-line="345" selection-end-column="104" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Arkanoid/common.js">
+    <entry file="file://$PROJECT_DIR$/Arkanoid/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="262" column="75" lean-forward="true" selection-start-line="262" selection-start-column="75" selection-end-line="262" selection-end-column="75" />
+        <state relative-caret-position="468">
+          <caret line="26" column="24" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="24" />
         </state>
       </provider>
     </entry>

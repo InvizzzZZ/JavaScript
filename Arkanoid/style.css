@@ -9,7 +9,7 @@ body {
     /*display: grid;*/
     position: relative;
     text-align: center;
-    padding: 100px 100px 0 100px;
+    padding: 50px 100px 50px 100px;
     height: 100vh;
     width: auto;
     min-width: 375px;
@@ -22,8 +22,9 @@ body {
 
 #container {
     margin: 0 auto;
-    height: 90.24vh;
+    height: 100%;
     border: 2px solid black;
+    border-radius: 20px;
     background-color: #53799e;
     display: grid;
     grid-gap: 2px;
@@ -161,11 +162,17 @@ body {
 #lifesNode,
 #scoreNode,
 #buttons{
-    font: 23px arial, helvetica, sans-serif;
-    color: #c8c727;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 25px;
+    color: #212442;
     border: 1px solid #ccc;
     border-radius: 10px;
-    text-align: center;
+    /*text-align: center;*/
+}
+
+#lifesNode,
+#scoreNode{
+    padding-top: 15px;
 }
 
 #lifesNode {

@@ -58,7 +58,7 @@ let winMusic = document.getElementById('winMusic');
 
 window.onload = () => {
     play.style.top = container.offsetTop + container.offsetHeight / 2 - play.offsetHeight / 2 + 'px';
-    play.style.left = container.offsetLeft + container.offsetWidth / 2 + container.offsetLeft - play.offsetWidth / 2 + 'px';
+    play.style.left = field.offsetWidth / 2 + container.offsetLeft - play.offsetWidth / 2 + 'px';
 
     // leftArrow.style.top = container.offsetHeight - container.offsetHeight / 4 + 'px';
     // leftArrow.style.left = 40 + 'px';
@@ -342,7 +342,10 @@ function onResize() {
         brickHeight = brick.offsetHeight + 2;
         brickWidth = brick.offsetWidth + 2;
 
-        play.style.top = container.offsetHeight / 2 - play.offsetHeight / 2 + 'px';
+        // play.style.top = container.offsetTop + container.offsetHeight / 2 - play.offsetHeight / 2 + 'px';
+        // play.style.left = field.offsetWidth / 2 + container.offsetLeft - play.offsetWidth / 2 + 'px';
+        play.style.top = container.offsetTop + container.offsetHeight / 2 - play.offsetHeight / 2 + 'px';
+        // play.style.left = container.offsetLeft + container.offsetWidth / 2 - play.offsetWidth / 2 + 'px';
         play.style.left = field.offsetWidth / 2 + container.offsetLeft - play.offsetWidth / 2 + 'px';
 
         // leftArrow.style.top = container.offsetHeight - container.offsetHeight / 4 + 'px';
