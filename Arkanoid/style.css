@@ -7,13 +7,12 @@
 body {
     /*cursor: none !important;*/
     /*display: grid;*/
+    /*margin: 0 auto;*/
     position: relative;
     text-align: center;
     padding: 50px 100px 50px 100px;
     height: 100vh;
-    width: auto;
-    min-width: 375px;
-    min-height: 375px;
+    /*width: auto;*/
     /*grid-template-columns: 1fr;*/
     /*grid-template-rows: 1fr;*/
     /*align-items: center;*/
@@ -21,6 +20,9 @@ body {
 }
 
 #container {
+    min-width: 575px;
+    min-height: 575px;
+    max-width: 1200px;
     margin: 0 auto;
     height: 100%;
     border: 2px solid black;
@@ -61,6 +63,33 @@ body {
     transition-duration: .3s;
 }
 
+#recordsScreen{
+    position: absolute;
+    padding-top: 200px;
+    z-index: 3;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #000000;
+    text-align: center;
+    font-family: 'Press Start 2P', cursive;
+    transition-duration: .3s;
+    line-height: 35px;
+}
+#recordsScreen > *{
+    background: linear-gradient(180deg, rgba(253,29,29,1) 0%, rgba(58,95,180,1) 50%, rgba(252,176,69,1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 30px;
+}
+
+#recordsScreen > img{
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+
 #startScreen > span{
    background: linear-gradient(180deg, rgba(253,29,29,1) 0%, rgba(58,95,180,1) 50%, rgba(252,176,69,1) 100%);
     -webkit-background-clip: text;
@@ -75,7 +104,7 @@ body {
     -webkit-text-fill-color: transparent;
 }
 
-#endScreen, #winScreen{
+#endScreen, #winScreen, #recordsScreen{
     display: none;
 }
 
@@ -116,23 +145,23 @@ body {
 }
 
 .brick:nth-child(2n) {
-    background: linear-gradient(to bottom, #ccc 0%, #777 100%);
+    background: linear-gradient(to bottom, rgba(164, 164, 164, 0.33) 0%, #6f1313 100%);
 }
 
 .brick:nth-child(5n) {
-    background: linear-gradient(to bottom, #ccc 0%, #008 100%);
+    background: linear-gradient(to bottom, #ccc 0%, #384b70 100%);
 }
 
 .brick:nth-child(3n) {
-    background: linear-gradient(to bottom, #ccc 0%, #080 100%);
+    background: linear-gradient(to bottom, #ccc 0%, #165918 100%);
 }
 
 .brick:nth-child(7n) {
-    background: linear-gradient(to bottom, #ccc 0%, #808 100%);
+    background: linear-gradient(to bottom, #ccc 0%, #4e4e4e 100%);
 }
 
 .brick:nth-child(11n) {
-    background: linear-gradient(to bottom, #ccc 0%, #880 100%);
+    background: linear-gradient(to bottom, #ccc 0%, #0c0c0c 100%);
 }
 
 .removed {
@@ -151,8 +180,8 @@ body {
 }
 
 #ball {
-    width: 45px;
-    height: 45px;
+    width: 40px;
+    height: 40px;
     border: 1px solid #955;
     background: linear-gradient(to bottom, #fdd 0%, #500 100%);
     border-radius: 50%;
@@ -163,7 +192,7 @@ body {
 #scoreNode,
 #buttons{
     font-family: 'Press Start 2P', cursive;
-    font-size: 25px;
+    font-size: 15px;
     color: #212442;
     border: 1px solid #ccc;
     border-radius: 10px;
@@ -187,7 +216,7 @@ body {
     padding: 5px;
     display: grid;
     grid-gap: 5px;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr;
     background: linear-gradient(to bottom, #ccc 0%, #008 100%);
 }
@@ -200,7 +229,7 @@ body {
     content: 'score: ';
 }
 
-#sound, #pause_resume {
+#sound, #pause_resume, #record {
     color: #fff !important;
     outline: none;
     /*text-transform: uppercase;*/
@@ -241,6 +270,7 @@ img{
     z-index: 2;
     position: absolute;
     opacity: 0.5;
+    width: 17vw;
 }
 
 #play > img{
@@ -250,7 +280,7 @@ img{
 }
 
 
-#play:hover, #sound:hover, #pause_resume:hover {
+#play:hover, #sound:hover, #pause_resume:hover, #record:hover, #cancel:hover {
     transform: scale(1.1);
 }
 

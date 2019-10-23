@@ -35,6 +35,11 @@ play.addEventListener('click', start, false);
 // // rightArrow.addEventListener('click', moveLeftRight, false);
 //
 
+let records = JSON.parse(window.localStorage.getItem('records')) || [];
+if (records.length === 0) {
+    window.localStorage.setItem('records', JSON.stringify(records));
+}
+
 // sound
 let sound = document.getElementById('sound');
 sound.addEventListener('click', soundOff, false);
@@ -42,12 +47,22 @@ sound.addEventListener('click', soundOff, false);
 let pause = document.getElementById('pause_resume');
 pause.addEventListener('click', pauseGame, false);
 
+let record = document.getElementById('record');
+record.addEventListener('click', showRecords, false);
+
 // screens
 let startScreen = document.getElementById('startScreen');
 startScreen.addEventListener('click', hideStartScreen, false);
 document.addEventListener('keydown', hideStartScreen, false);
 let endScreen = document.getElementById('endScreen');
 let winScreen = document.getElementById('winScreen');
+let recordsScreen = document.getElementById('recordsScreen');
+// recordsScreen.style.left = container.style.left + 'px';
+// recordsScreen.style.top = container.style.top + 'px';
+// recordsScreen.style.right = container.style.right + 'px';
+// recordsScreen.style.bottom = container.style.bottom + 'px';
+
+
 let result = document.getElementById('result');
 
 let titleMusic = document.getElementById('titleMusic');
@@ -57,8 +72,14 @@ let winMusic = document.getElementById('winMusic');
 
 
 window.onload = () => {
+    // showRecords();
     play.style.top = container.offsetTop + container.offsetHeight / 2 - play.offsetHeight / 2 + 'px';
-    play.style.left = field.offsetWidth / 2 + container.offsetLeft - play.offsetWidth / 2 + 'px';
+    play.style.left = container.offsetLeft + container.offsetWidth / 2 - play.offsetWidth / 2 + 'px';
+
+    // recordsScreen.top = container.offsetTop + 'px';
+    // recordsScreen.left = container.offsetLeft + 'px';
+    // recordsScreen.top = container.offsetTop + 'px';
+    // recordsScreen.top = container.offsetTop + 'px';
 
     // leftArrow.style.top = container.offsetHeight - container.offsetHeight / 4 + 'px';
     // leftArrow.style.left = 40 + 'px';
@@ -86,7 +107,7 @@ let brickWidth = brick.offsetWidth + 2; // 2 ширина рамки 1 + 1
 // paddle
 let paddleProps = {
     posX: field.offsetWidth / 2 + container.offsetLeft - paddle.offsetWidth / 2,
-    posY: container.offsetTop + container.offsetHeight - paddle.offsetHeight - 5,
+    posY: container.offsetTop + container.offsetHeight - paddle.offsetHeight,
 
     speed: 0,
 
@@ -99,7 +120,7 @@ let paddleProps = {
 // ball
 let ballProps = {
     posX: paddleProps.posX + paddle.offsetWidth / 2 - ball.offsetWidth / 2,
-    posY: container.offsetTop + container.offsetHeight - paddle.offsetHeight - 5 - ball.offsetHeight,
+    posY: container.offsetTop + container.offsetHeight - paddle.offsetHeight - ball.offsetHeight,
 
     speedX: randomDiap(-4, 4),
     speedY: -6,
@@ -199,6 +220,7 @@ function begin() {
         ballProps.posY + ball.offsetHeight > paddle.offsetTop) {
 
         ballProps.speedY = -ballProps.speedY;
+        // ballProps.speedX = -ballProps.speedX;
         // console.log('>0.75 ' + ballProps.speedX);
         ballProps.speedX > 0 ? ballProps.speedX = ballProps.speedX + 2 : ballProps.speedX = ballProps.speedX = ballProps.speedX - 2;
         // console.log('<0.75 ' + ballProps.speedX);
@@ -209,6 +231,7 @@ function begin() {
         ballProps.posY + ball.offsetHeight > paddle.offsetTop) {
 
         ballProps.speedY = -ballProps.speedY;
+        ballProps.speedX = -ballProps.speedX;
         // console.log('>0.25 & <0.75 ' + ballProps.speedX);
         if (ballProps.speedX !== 2 && ballProps.speedX !== -2) {
             ballProps.speedX > 0 ? ballProps.speedX = ballProps.speedX - 2 : ballProps.speedX = ballProps.speedX = ballProps.speedX + 2;
@@ -246,6 +269,11 @@ function begin() {
         if (lifesProps.lifes === 0) {
             lifes.innerText = lifesProps.update();
             result.innerText += scoreProps.score;
+
+            records.push(scoreProps.score); // добавление в рекорды
+            window.localStorage.setItem('records', JSON.stringify(records));
+            console.log(JSON.parse(window.localStorage.getItem('records')));
+
             endScreen.style.display = 'block';
             endMusic.play();
         }
@@ -273,11 +301,19 @@ function begin() {
                 bricks[row * 10 + col].classList.add('removed');
                 scoreProps.score += 100;
                 score.innerText = scoreProps.update();
-                if (scoreProps.score === 1000) {
+                if (scoreProps.score === 200) {
                     clearInterval(interval);
+                    records.push(scoreProps.score);// добавление в рекорды
+
+                    window.localStorage.setItem('records', JSON.stringify(records));
                     roundMusic.pause();
                     winScreen.style.display = 'block';
+
                     winMusic.play();
+                    console.log(JSON.parse(window.localStorage.getItem('records')));
+                    setTimeout(() => {
+                        showRecords();
+                    }, 3000);
 
                 }
                 if (scoreProps.score >= 3300) {
@@ -332,7 +368,7 @@ function onResize() {
     setTimeout(() => {
         /* cursorPosX =*/
         paddleProps.posX = field.offsetWidth / 2 + container.offsetLeft - paddle.offsetWidth / 2;
-        paddleProps.posY = container.offsetTop + container.offsetHeight - paddle.offsetHeight - 5;
+        paddleProps.posY = container.offsetTop + container.offsetHeight - paddle.offsetHeight;
         paddleProps.update();
 
         ballProps.posX = paddleProps.posX + paddle.offsetWidth / 2 - ball.offsetWidth / 2;
@@ -344,10 +380,11 @@ function onResize() {
 
         // play.style.top = container.offsetTop + container.offsetHeight / 2 - play.offsetHeight / 2 + 'px';
         // play.style.left = field.offsetWidth / 2 + container.offsetLeft - play.offsetWidth / 2 + 'px';
-        play.style.top = container.offsetTop + container.offsetHeight / 2 - play.offsetHeight / 2 + 'px';
+        // play.style.top = container.offsetTop + container.offsetHeight / 2 - play.offsetHeight / 2 + 'px';
         // play.style.left = container.offsetLeft + container.offsetWidth / 2 - play.offsetWidth / 2 + 'px';
-        play.style.left = field.offsetWidth / 2 + container.offsetLeft - play.offsetWidth / 2 + 'px';
-
+        // play.style.left = field.offsetWidth / 2 + container.offsetLeft - play.offsetWidth / 2 + 'px';
+        play.style.top = container.offsetTop + container.offsetHeight / 2 - play.offsetHeight / 2 + 'px';
+        play.style.left = container.offsetLeft + container.offsetWidth / 2 - play.offsetWidth / 2 + 'px';
         // leftArrow.style.top = container.offsetHeight - container.offsetHeight / 4 + 'px';
         // leftArrow.style.left = 40 + 'px';
         //
@@ -399,7 +436,7 @@ function touchMove(EO) {
     let fingerPosX = parseInt(touchobj.clientX);
     dist = fingerPosX - touchPosX;
     touchPosX = fingerPosX;
-    // console.log(dist + ' dist');
+    console.log(dist + ' dist');
     paddleProps.posX += dist;
     dist = 0;
     paddle.style.left = paddleProps.posX + 'px';
@@ -441,6 +478,37 @@ function pauseGame() {
             document.getElementById('pause').setAttribute('src', 'img/pause.svg');
         }
     }
+}
+
+function showRecords() {
+    pauseGame();
+
+    recordsScreen.innerHTML = '';
+
+    let span = document.createElement('span');
+    span.innerText = 'Records:';
+    recordsScreen.appendChild(span);
+
+    records = records.sort(function (a, b) {
+        return b - a
+    });
+
+    for (let i = 0; i < records.length; i++) {
+        let p = document.createElement('p');
+        p.innerHTML = i + 1 + '. ' + records[i];
+        recordsScreen.appendChild(p);
+        if (i > 10) break;
+    }
+
+    let cancel = document.createElement('img');
+    cancel.src = 'img/cancel.svg';
+    cancel.id = 'cancel';
+    cancel.onclick = () => {
+        recordsScreen.style.display = 'none';
+    };
+    recordsScreen.appendChild(cancel);
+
+    recordsScreen.style.display = 'block';
 }
 
 // function getMousePosition(EO) {
