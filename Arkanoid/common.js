@@ -210,6 +210,7 @@ function begin() {
         ballProps.posY + ball.offsetHeight > paddle.offsetTop) {
 
         ballProps.speedY = -ballProps.speedY;
+        window.navigator.vibrate(200);
         // console.log('<0.25 ' + ballProps.speedX);
         ballProps.speedX > 0 ? ballProps.speedX = ballProps.speedX + 2 : ballProps.speedX = ballProps.speedX = ballProps.speedX - 2;
         // console.log('<0.25 ' + ballProps.speedX);
@@ -220,6 +221,7 @@ function begin() {
         ballProps.posY + ball.offsetHeight > paddle.offsetTop) {
 
         ballProps.speedY = -ballProps.speedY;
+        window.navigator.vibrate(200);
         // ballProps.speedX = -ballProps.speedX;
         // console.log('>0.75 ' + ballProps.speedX);
         ballProps.speedX > 0 ? ballProps.speedX = ballProps.speedX + 2 : ballProps.speedX = ballProps.speedX = ballProps.speedX - 2;
@@ -231,7 +233,8 @@ function begin() {
         ballProps.posY + ball.offsetHeight > paddle.offsetTop) {
 
         ballProps.speedY = -ballProps.speedY;
-        ballProps.speedX = -ballProps.speedX;
+        window.navigator.vibrate(200);
+        // ballProps.speedX = -ballProps.speedX;
         // console.log('>0.25 & <0.75 ' + ballProps.speedX);
         if (ballProps.speedX !== 2 && ballProps.speedX !== -2) {
             ballProps.speedX > 0 ? ballProps.speedX = ballProps.speedX - 2 : ballProps.speedX = ballProps.speedX = ballProps.speedX + 2;
@@ -274,8 +277,13 @@ function begin() {
             window.localStorage.setItem('records', JSON.stringify(records));
             console.log(JSON.parse(window.localStorage.getItem('records')));
 
+
             endScreen.style.display = 'block';
             endMusic.play();
+
+            setTimeout(() => {
+                showRecords();
+            }, 3000);
         }
         lifes.innerText = lifesProps.update();
     }
@@ -301,7 +309,7 @@ function begin() {
                 bricks[row * 10 + col].classList.add('removed');
                 scoreProps.score += 100;
                 score.innerText = scoreProps.update();
-                if (scoreProps.score === 200) {
+                if (scoreProps.score === 1000) {
                     clearInterval(interval);
                     records.push(scoreProps.score);// добавление в рекорды
 
@@ -399,27 +407,27 @@ function pressed(EO) {
     let code = EO.keyCode;
 
     if (code === 37) {
-        paddle.style.background = 'linear-gradient(to bottom, #d2d128 0%, #d22b2a 100%)';
+        paddle.style.background = 'linear-gradient(to bottom, rgba(164, 164, 164, 0.83) 0%, #72950e 100%)';
         paddleProps.speed = -6;
     }
 
     if (code === 39) {
         paddleProps.speed = 6;
-        paddle.style.background = 'linear-gradient(to bottom, #d2d128 0%, #d22b2a 100%)';
+        paddle.style.background = 'linear-gradient(to bottom, rgba(164, 164, 164, 0.83) 0%, #72950e 100%)';
     }
 
 }
 
 function unpressed() {
     paddleProps.speed = 0;
-    paddle.style.background = 'linear-gradient(to bottom, #cdd 0%, #777 100%)';
+    paddle.style.background = 'linear-gradient(to bottom, rgba(164, 164, 164, 0.83) 0%, #348bb1 100%)';
 }
 
 function touchStart(EO) {
     // alert('touchstart');
     EO = EO || window.event;
     EO.preventDefault();
-    paddle.style.background = 'linear-gradient(to bottom, #d2d128 0%, #d22b2a 100%)';
+    paddle.style.background = 'linear-gradient(to bottom, rgba(164, 164, 164, 0.83) 0%, #72950e 100%)';
     touchobj = EO.changedTouches[0]; // первая точка прикосновения
     touchPosX = parseInt(touchobj.clientX); // положение точки касания по x, относительно левого края браузера
     console.log(touchPosX + " touchPosX");

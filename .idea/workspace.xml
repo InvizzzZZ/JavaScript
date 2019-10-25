@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ac4f26e7-e3cb-4ba2-b73f-80845ac9402d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Arkanoid/img/cancel.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Arkanoid/img/trophy.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Arkanoid/img/stars.jpg" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/React/book/my-app/src/components/Recipe/Ingredients/Ingredients.jsx" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/React/book/my-app/src/components/Recipe/Instructions/Instruction.jsx" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/React/book/my-app/src/components/Recipe/Recipe.jsx" afterDir="false" />
@@ -16,7 +15,9 @@
       <change afterPath="$PROJECT_DIR$/React/book/promises/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Arkanoid/common.js" beforeDir="false" afterPath="$PROJECT_DIR$/Arkanoid/common.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Arkanoid/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Arkanoid/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Arkanoid/img/pause.svg" beforeDir="false" afterPath="$PROJECT_DIR$/Arkanoid/img/pause.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Arkanoid/img/play.svg" beforeDir="false" afterPath="$PROJECT_DIR$/Arkanoid/img/play.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Arkanoid/img/speaker.svg" beforeDir="false" afterPath="$PROJECT_DIR$/Arkanoid/img/speaker.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Arkanoid/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/Arkanoid/style.css" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -30,11 +31,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Arkanoid/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="22" column="21" lean-forward="true" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
+            <state relative-caret-position="136">
+              <caret line="196" column="18" selection-start-line="196" selection-start-column="18" selection-end-line="196" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -42,17 +43,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Arkanoid/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-25">
-              <caret line="19" column="6" lean-forward="true" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
+            <state relative-caret-position="-78">
+              <caret line="30" column="6" lean-forward="true" selection-start-line="30" selection-start-column="6" selection-end-line="30" selection-end-column="6" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Arkanoid/common.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="104" column="19" selection-start-line="104" selection-start-column="10" selection-end-line="104" selection-end-column="19" />
+            <state relative-caret-position="287">
+              <caret line="282" column="21" selection-start-line="282" selection-start-column="21" selection-end-line="282" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -110,6 +111,9 @@
       <find>lif</find>
       <find>pause</find>
       <find>records</find>
+      <find>linear</find>
+      <find>Game</find>
+      <find>end</find>
     </findStrings>
     <dirStrings>
       <dir>C:\Users\Hrom\WebstormProjects\JavaScript</dir>
@@ -121,9 +125,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/A4+/common.js" />
-        <option value="$PROJECT_DIR$/B1+/common.js" />
-        <option value="$PROJECT_DIR$/N.17/index.html" />
         <option value="$PROJECT_DIR$/N.17/common.js" />
         <option value="$PROJECT_DIR$/C2+/common.js" />
         <option value="$PROJECT_DIR$/N.10/common.js" />
@@ -170,14 +171,17 @@
         <option value="$PROJECT_DIR$/tmp/common.js" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/Arkanoid/index.html" />
-        <option value="$PROJECT_DIR$/Arkanoid/common.js" />
+        <option value="$PROJECT_DIR$/Arkanoid/img/play.svg" />
+        <option value="$PROJECT_DIR$/Arkanoid/img/speaker.svg" />
+        <option value="$PROJECT_DIR$/Arkanoid/img/pause.svg" />
         <option value="$PROJECT_DIR$/Arkanoid/style.css" />
+        <option value="$PROJECT_DIR$/Arkanoid/common.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="205" />
-    <option name="y" value="20" />
+    <option name="x" value="22" />
+    <option name="y" value="159" />
     <option name="width" value="1400" />
     <option name="height" value="1000" />
   </component>
@@ -187,6 +191,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -205,11 +210,16 @@
               <item name="Arkanoid" type="462c0819:PsiDirectoryNode" />
               <item name="img" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="JavaScript" type="b2602c69:ProjectViewProjectNode" />
+              <item name="JavaScript" type="462c0819:PsiDirectoryNode" />
+              <item name="Arkanoid" type="462c0819:PsiDirectoryNode" />
+              <item name="mp3" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -230,19 +240,19 @@
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Hrom\WebstormProjects\JavaScript\Arkanoid\img" />
-      <recent name="C:\Users\Hrom\WebstormProjects\JavaScript\Arkanoid" />
-      <recent name="C:\Users\Hrom\WebstormProjects\JavaScript\React\book\my-app\src\components\Recipe" />
-      <recent name="C:\Users\Hrom\WebstormProjects\JavaScript\React" />
-      <recent name="C:\Users\Hrom\WebstormProjects\JavaScript\N.30\img" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Hrom\WebstormProjects\JavaScript\Arkanoid\img" />
       <recent name="C:\Users\Hrom\WebstormProjects\JavaScript\Arkanoid\mp3" />
       <recent name="C:\Users\Hrom\WebstormProjects\JavaScript\Arkanoid" />
       <recent name="C:\Users\Hrom\WebstormProjects\JavaScript\N.37(Clock SVG)" />
       <recent name="C:\Users\Hrom\WebstormProjects\JavaScript" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Hrom\WebstormProjects\JavaScript\Arkanoid\img" />
+      <recent name="C:\Users\Hrom\WebstormProjects\JavaScript\Arkanoid" />
+      <recent name="C:\Users\Hrom\WebstormProjects\JavaScript\React\book\my-app\src\components\Recipe" />
+      <recent name="C:\Users\Hrom\WebstormProjects\JavaScript\React" />
+      <recent name="C:\Users\Hrom\WebstormProjects\JavaScript\N.30\img" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -311,7 +321,8 @@
       <workItem from="1570374722502" duration="1467000" />
       <workItem from="1570447361459" duration="7766000" />
       <workItem from="1571814901734" duration="4821000" />
-      <workItem from="1571829389847" duration="6800000" />
+      <workItem from="1571829389847" duration="7956000" />
+      <workItem from="1572016117242" duration="3362000" />
     </task>
     <task id="LOCAL-00001" summary="A2+ &amp; A3+ исправленные">
       <created>1562097959547</created>
@@ -338,13 +349,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="269322000" />
+    <option name="totallyTimeSpent" value="273840000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.10642782" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.07586934" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -356,7 +367,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32936078" />
-      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.48630136" weight="0.27193934" />
+      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.48630136" visible="true" weight="0.27193934" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.51369864" side_tool="true" weight="0.08992416" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -639,18 +650,6 @@
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/Arkanoid/img/icons8-mute.svg" />
-    <entry file="file://$PROJECT_DIR$/Arkanoid/img/mute.svg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Arkanoid/img/pause.svg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Arkanoid/img/speaker.svg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Arkanoid/img/play.svg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="54">
@@ -658,20 +657,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Arkanoid/img/right.svg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/tmp/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2160">
           <caret line="120" column="1" selection-start-line="120" selection-start-column="1" selection-end-line="120" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/N.43/common.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2214">
-          <caret line="123" column="35" selection-start-line="123" selection-start-column="35" selection-end-line="123" selection-end-column="35" />
         </state>
       </provider>
     </entry>
@@ -682,24 +671,46 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/N.43/common.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2214">
+          <caret line="123" column="35" selection-start-line="123" selection-start-column="35" selection-end-line="123" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Arkanoid/img/right.svg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Arkanoid/img/mute.svg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Arkanoid/img/play.svg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Arkanoid/img/speaker.svg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Arkanoid/img/pause.svg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Arkanoid/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="196" column="18" selection-start-line="196" selection-start-column="18" selection-end-line="196" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Arkanoid/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-25">
-          <caret line="19" column="6" lean-forward="true" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
+        <state relative-caret-position="-78">
+          <caret line="30" column="6" lean-forward="true" selection-start-line="30" selection-start-column="6" selection-end-line="30" selection-end-column="6" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Arkanoid/common.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="104" column="19" selection-start-line="104" selection-start-column="10" selection-end-line="104" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Arkanoid/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="22" column="21" lean-forward="true" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
+        <state relative-caret-position="287">
+          <caret line="282" column="21" selection-start-line="282" selection-start-column="21" selection-end-line="282" selection-end-column="21" />
         </state>
       </provider>
     </entry>
