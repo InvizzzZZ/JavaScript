@@ -28,13 +28,6 @@ let ball = document.getElementById('ball');
 let play = document.getElementById('play');
 play.addEventListener('click', start, false);
 
-// let leftArrow = document.getElementById('leftArrow');
-// // leftArrow.addEventListener('click', moveLeftRight, false);
-//
-// let rightArrow = document.getElementById('rightArrow');
-// // rightArrow.addEventListener('click', moveLeftRight, false);
-//
-
 let records = JSON.parse(window.localStorage.getItem('records')) || [];
 if (records.length === 0) {
     window.localStorage.setItem('records', JSON.stringify(records));
@@ -57,11 +50,6 @@ document.addEventListener('keydown', hideStartScreen, false);
 let endScreen = document.getElementById('endScreen');
 let winScreen = document.getElementById('winScreen');
 let recordsScreen = document.getElementById('recordsScreen');
-// recordsScreen.style.left = container.style.left + 'px';
-// recordsScreen.style.top = container.style.top + 'px';
-// recordsScreen.style.right = container.style.right + 'px';
-// recordsScreen.style.bottom = container.style.bottom + 'px';
-
 
 let result = document.getElementById('result');
 
@@ -72,20 +60,8 @@ let winMusic = document.getElementById('winMusic');
 
 
 window.onload = () => {
-    // showRecords();
     play.style.top = container.offsetTop + container.offsetHeight / 2 - play.offsetHeight / 2 + 'px';
     play.style.left = container.offsetLeft + container.offsetWidth / 2 - play.offsetWidth / 2 + 'px';
-
-    // recordsScreen.top = container.offsetTop + 'px';
-    // recordsScreen.left = container.offsetLeft + 'px';
-    // recordsScreen.top = container.offsetTop + 'px';
-    // recordsScreen.top = container.offsetTop + 'px';
-
-    // leftArrow.style.top = container.offsetHeight - container.offsetHeight / 4 + 'px';
-    // leftArrow.style.left = 40 + 'px';
-
-    // rightArrow.style.top = container.offsetHeight - container.offsetHeight / 4 + 'px';
-    // rightArrow.style.right = document.getElementById('right').offsetWidth + 40 + 'px';
 
     titleMusic.muted = false;
     titleMusic.play()
@@ -190,14 +166,12 @@ function start() {
         document.addEventListener('keydown', pressed, false);
         document.addEventListener('keyup', unpressed, false);
         paddle.addEventListener('touchstart', touchStart, false);
-        // document.addEventListener('mousemove', getMousePosition, false);
     }
 }
 
 function begin() {
     if (ballProps.speedX === 0) {
         console.log('переподача!');
-        // cancelAnimationFrame(interval);
         clearInterval(interval);
         interval = 0;
         start();
@@ -212,10 +186,7 @@ function begin() {
 
         ballProps.speedY = -ballProps.speedY;
         ballProps.posY = paddle.offsetTop - ball.offsetHeight;
-        // navigator.vibrate([100]);
-        // console.log('<0.25 ' + ballProps.speedX);
         ballProps.speedX > 0 ? ballProps.speedX = ballProps.speedX + 2 : ballProps.speedX = ballProps.speedX = ballProps.speedX - 2;
-        // console.log('<0.25 ' + ballProps.speedX);
     }
 
     if (ballProps.posX + (ball.offsetHeight / 2) > paddle.offsetLeft + paddle.offsetWidth * 0.75 &&
@@ -224,11 +195,7 @@ function begin() {
 
         ballProps.speedY = -ballProps.speedY;
         ballProps.posY = paddle.offsetTop - ball.offsetHeight;
-        // navigator.vibrate([100]);
-        // ballProps.speedX = -ballProps.speedX;
-        // console.log('>0.75 ' + ballProps.speedX);
         ballProps.speedX > 0 ? ballProps.speedX = ballProps.speedX + 2 : ballProps.speedX = ballProps.speedX = ballProps.speedX - 2;
-        // console.log('<0.75 ' + ballProps.speedX);
     }
 
     if (ballProps.posX + (ball.offsetHeight / 2) > paddle.offsetLeft + paddle.offsetWidth * 0.25 &&
@@ -237,13 +204,9 @@ function begin() {
 
         ballProps.speedY = -ballProps.speedY;
         ballProps.posY = paddle.offsetTop - ball.offsetHeight;
-        // navigator.vibrate([100]);
-        // ballProps.speedX = -ballProps.speedX;
-        // console.log('>0.25 & <0.75 ' + ballProps.speedX);
         if (ballProps.speedX !== 2 && ballProps.speedX !== -2) {
             ballProps.speedX > 0 ? ballProps.speedX = ballProps.speedX - 2 : ballProps.speedX = ballProps.speedX = ballProps.speedX + 2;
         }
-        // console.log('>0.25 & <0.75 ' + ballProps.speedX);
     }
     // end
 
@@ -264,7 +227,6 @@ function begin() {
     // вылетел ли мяч ниже пола?
     if (ballProps.posY + ball.offsetHeight > container.offsetHeight + container.offsetTop) {
         ballProps.posY = container.offsetHeight + container.offsetTop - ball.offsetHeight;
-        // cancelAnimationFrame(interval);
         clearInterval(interval);
         interval = 0;
 
@@ -300,15 +262,10 @@ function begin() {
     }
 
     //столкнулся с кирпичем
-    if (ballProps.posY + (ball.offsetHeight / 2) >= brick.offsetLeft) {
+    if (ballProps.posY + (ball.offsetHeight / 2) >= brick.offsetTop) {
         if (ballProps.posY + (ball.offsetHeight / 2) <= brickLast.offsetTop + brickLast.offsetHeight) {
             let row = Math.floor((ballProps.posY - topTabs.offsetHeight - container.offsetTop + (ball.offsetHeight / 2)) / brickHeight);
             let col = Math.floor((ballProps.posX - container.offsetLeft + (ball.offsetHeight / 2)) / brickWidth);
-
-            // console.log('ballProps.posY = ' + ballProps.posY + (ball.offsetHeight / 2), 'ballProps.posX = ' + ballProps.posX + (ball.offsetHeight / 2));
-            // console.log('row = ' + row, 'col = ' + col);
-            // console.log('brickHeight = ' + brickHeight, 'brickWidth = ' + brickWidth);
-            // console.log(bricks[row * 10 + col].className);
 
             if (!bricks[row * 10 + col].classList.contains('removed')) {
                 bricks[row * 10 + col].style.transform = 'scale(1, -1)';
@@ -337,12 +294,6 @@ function begin() {
                     ballProps.speedY > 0 ? ballProps.speedY = 11 : ballProps.speedY = -11;
                 }
                 ballProps.speedY = -ballProps.speedY;
-                if (ballProps.speedX < 0 && ((ballProps.posX + (ball.offsetHeight / 2)) % brickWidth < 10 || (ballProps.posX + (ball.offsetHeight / 2)) % brickWidth > 30)) {
-                    ballProps.speedX = -ballProps.speedX;
-                }
-                if (ballProps.speedX > 0 && ((ballProps.posX + (ball.offsetHeight / 2) + brickHeight) % brickWidth < 10 || ((ballProps.posX + (ball.offsetHeight / 2) + brickHeight) % brickWidth > 30))) {
-                    ballProps.speedX = -ballProps.speedX;
-                }
             }
         }
     }
@@ -350,24 +301,19 @@ function begin() {
     ballProps.update();
 
     //paddle
-    /* cursorPosX =*/
     paddleProps.posX += paddleProps.speed;
 
     //левая стена
     if (paddleProps.posX < container.offsetLeft) {
-        /* cursorPosX =*/
         paddleProps.posX = container.offsetLeft;
     }
 
     //правая стена
     if (paddleProps.posX + paddle.offsetWidth > field.offsetWidth + container.offsetLeft) {
-        /*  cursorPosX =*/
         paddleProps.posX = field.offsetWidth + container.offsetLeft - paddle.offsetWidth;
     }
 
     paddleProps.update();
-
-    // interval = requestAnimationFrame(begin);
 }
 
 function hideStartScreen() {
@@ -380,7 +326,6 @@ function hideStartScreen() {
 
 function onResize() {
     setTimeout(() => {
-        /* cursorPosX =*/
         paddleProps.posX = field.offsetWidth / 2 + container.offsetLeft - paddle.offsetWidth / 2;
         paddleProps.posY = container.offsetTop + container.offsetHeight - paddle.offsetHeight;
         paddleProps.update();
@@ -392,18 +337,8 @@ function onResize() {
         brickHeight = brick.offsetHeight + 2;
         brickWidth = brick.offsetWidth + 2;
 
-        // play.style.top = container.offsetTop + container.offsetHeight / 2 - play.offsetHeight / 2 + 'px';
-        // play.style.left = field.offsetWidth / 2 + container.offsetLeft - play.offsetWidth / 2 + 'px';
-        // play.style.top = container.offsetTop + container.offsetHeight / 2 - play.offsetHeight / 2 + 'px';
-        // play.style.left = container.offsetLeft + container.offsetWidth / 2 - play.offsetWidth / 2 + 'px';
-        // play.style.left = field.offsetWidth / 2 + container.offsetLeft - play.offsetWidth / 2 + 'px';
         play.style.top = container.offsetTop + container.offsetHeight / 2 - play.offsetHeight / 2 + 'px';
         play.style.left = container.offsetLeft + container.offsetWidth / 2 - play.offsetWidth / 2 + 'px';
-        // leftArrow.style.top = container.offsetHeight - container.offsetHeight / 4 + 'px';
-        // leftArrow.style.left = 40 + 'px';
-        //
-        // rightArrow.style.top = container.offsetHeight - container.offsetHeight / 4 + 'px';
-        // rightArrow.style.right = document.getElementById('right').offsetWidth + 40 + 'px';
     }, 200);
 }
 
@@ -430,7 +365,6 @@ function unpressed() {
 }
 
 function touchStart(EO) {
-    // alert('touchstart');
     EO = EO || window.event;
     EO.preventDefault();
     paddle.style.background = 'linear-gradient(to bottom, rgba(164, 164, 164, 0.83) 0%, #72950e 100%)';
@@ -443,7 +377,6 @@ function touchStart(EO) {
 }
 
 function touchMove(EO) {
-    // alert('touchmove');
     EO = EO || window.event;
     EO.preventDefault();
     touchobj = EO.changedTouches[0];
