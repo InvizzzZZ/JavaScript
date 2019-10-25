@@ -211,7 +211,7 @@ function begin() {
 
         ballProps.speedY = -ballProps.speedY;
         ballProps.posY = paddle.offsetTop - ball.offsetHeight;
-        navigator.vibrate([100]);
+        // navigator.vibrate([100]);
         // console.log('<0.25 ' + ballProps.speedX);
         ballProps.speedX > 0 ? ballProps.speedX = ballProps.speedX + 2 : ballProps.speedX = ballProps.speedX = ballProps.speedX - 2;
         // console.log('<0.25 ' + ballProps.speedX);
@@ -223,7 +223,7 @@ function begin() {
 
         ballProps.speedY = -ballProps.speedY;
         ballProps.posY = paddle.offsetTop - ball.offsetHeight;
-        navigator.vibrate([100]);
+        // navigator.vibrate([100]);
         // ballProps.speedX = -ballProps.speedX;
         // console.log('>0.75 ' + ballProps.speedX);
         ballProps.speedX > 0 ? ballProps.speedX = ballProps.speedX + 2 : ballProps.speedX = ballProps.speedX = ballProps.speedX - 2;
@@ -236,7 +236,7 @@ function begin() {
 
         ballProps.speedY = -ballProps.speedY;
         ballProps.posY = paddle.offsetTop - ball.offsetHeight;
-        navigator.vibrate([100]);
+        // navigator.vibrate([100]);
         // ballProps.speedX = -ballProps.speedX;
         // console.log('>0.25 & <0.75 ' + ballProps.speedX);
         if (ballProps.speedX !== 2 && ballProps.speedX !== -2) {
