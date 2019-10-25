@@ -114,6 +114,7 @@ let paddleProps = {
     update: function () {
         paddle.style.left = this.posX + "px";
         paddle.style.top = this.posY + "px";
+
     }
 };
 
@@ -314,7 +315,7 @@ function begin() {
                 bricks[row * 10 + col].classList.add('removed');
                 scoreProps.score += 100;
                 score.innerText = scoreProps.update();
-                if (scoreProps.score === 1000) {
+                if (scoreProps.score === 10000) {
                     clearInterval(interval);
                     records.push(scoreProps.score);// добавление в рекорды
 
