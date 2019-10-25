@@ -210,7 +210,8 @@ function begin() {
         ballProps.posY + ball.offsetHeight > paddle.offsetTop) {
 
         ballProps.speedY = -ballProps.speedY;
-        window.navigator.vibrate(200);
+        ballProps.posY = paddle.offsetTop - ball.offsetHeight;
+        navigator.vibrate([100]);
         // console.log('<0.25 ' + ballProps.speedX);
         ballProps.speedX > 0 ? ballProps.speedX = ballProps.speedX + 2 : ballProps.speedX = ballProps.speedX = ballProps.speedX - 2;
         // console.log('<0.25 ' + ballProps.speedX);
@@ -221,7 +222,8 @@ function begin() {
         ballProps.posY + ball.offsetHeight > paddle.offsetTop) {
 
         ballProps.speedY = -ballProps.speedY;
-        window.navigator.vibrate(200);
+        ballProps.posY = paddle.offsetTop - ball.offsetHeight;
+        navigator.vibrate([100]);
         // ballProps.speedX = -ballProps.speedX;
         // console.log('>0.75 ' + ballProps.speedX);
         ballProps.speedX > 0 ? ballProps.speedX = ballProps.speedX + 2 : ballProps.speedX = ballProps.speedX = ballProps.speedX - 2;
@@ -233,7 +235,8 @@ function begin() {
         ballProps.posY + ball.offsetHeight > paddle.offsetTop) {
 
         ballProps.speedY = -ballProps.speedY;
-        window.navigator.vibrate(200);
+        ballProps.posY = paddle.offsetTop - ball.offsetHeight;
+        navigator.vibrate([100]);
         // ballProps.speedX = -ballProps.speedX;
         // console.log('>0.25 & <0.75 ' + ballProps.speedX);
         if (ballProps.speedX !== 2 && ballProps.speedX !== -2) {
@@ -245,11 +248,13 @@ function begin() {
 
     // вылетел ли мяч правее стены?
     if (ballProps.posX + ball.offsetWidth > field.offsetWidth + container.offsetLeft) {
+        ballProps.posX = field.offsetWidth + container.offsetLeft - ball.offsetWidth;
         ballProps.speedX = -ballProps.speedX;
     }
 
     // вылетел ли мяч левее стены?
     if (ballProps.posX < container.offsetLeft) {
+        ballProps.posX = container.offsetLeft;
         ballProps.speedX = -ballProps.speedX;
     }
 

@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ac4f26e7-e3cb-4ba2-b73f-80845ac9402d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Arkanoid/img/stars.jpg" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/React/book/my-app/src/components/Recipe/Ingredients/Ingredients.jsx" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/React/book/my-app/src/components/Recipe/Instructions/Instruction.jsx" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/React/book/my-app/src/components/Recipe/Recipe.jsx" afterDir="false" />
@@ -13,12 +12,7 @@
       <change afterPath="$PROJECT_DIR$/React/book/my-app/src/data.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/React/book/promises/common.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/React/book/promises/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Arkanoid/common.js" beforeDir="false" afterPath="$PROJECT_DIR$/Arkanoid/common.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Arkanoid/img/pause.svg" beforeDir="false" afterPath="$PROJECT_DIR$/Arkanoid/img/pause.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Arkanoid/img/play.svg" beforeDir="false" afterPath="$PROJECT_DIR$/Arkanoid/img/play.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Arkanoid/img/speaker.svg" beforeDir="false" afterPath="$PROJECT_DIR$/Arkanoid/img/speaker.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Arkanoid/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/Arkanoid/style.css" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -52,8 +46,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Arkanoid/common.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="287">
-              <caret line="282" column="21" selection-start-line="282" selection-start-column="21" selection-end-line="282" selection-end-column="21" />
+            <state relative-caret-position="125">
+              <caret line="238" column="33" selection-start-line="238" selection-start-column="33" selection-end-line="238" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -179,7 +173,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="22" />
     <option name="y" value="159" />
     <option name="width" value="1400" />
@@ -322,7 +316,7 @@
       <workItem from="1570447361459" duration="7766000" />
       <workItem from="1571814901734" duration="4821000" />
       <workItem from="1571829389847" duration="7956000" />
-      <workItem from="1572016117242" duration="3362000" />
+      <workItem from="1572016117242" duration="4158000" />
     </task>
     <task id="LOCAL-00001" summary="A2+ &amp; A3+ исправленные">
       <created>1562097959547</created>
@@ -349,7 +343,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="273840000" />
+    <option name="totallyTimeSpent" value="274636000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -709,8 +703,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Arkanoid/common.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="287">
-          <caret line="282" column="21" selection-start-line="282" selection-start-column="21" selection-end-line="282" selection-end-column="21" />
+        <state relative-caret-position="125">
+          <caret line="238" column="33" selection-start-line="238" selection-start-column="33" selection-end-line="238" selection-end-column="33" />
         </state>
       </provider>
     </entry>
