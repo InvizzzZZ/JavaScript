@@ -18,7 +18,7 @@
     "collection-visit": "^1.0.0",
     "concat-stream": "^1.6.2",
     "convert-source-map": "^1.6.0",
-    "copy-props": "^2.0.4",
+    "copy-props": "^2.0.5",
     "d": "^1.0.1",
     "debug": "^2.6.9",
     "define-properties": "^1.1.3",
